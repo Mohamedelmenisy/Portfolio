@@ -1,1 +1,466 @@
-<!-- Full enhanced HTML from user will be pasted here manually -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Elmenisy - Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+    }
+    header a.download-cv {
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    header a.download-cv:hover {
+      background: #2980b9;
+    }
+    nav {
+      background: #34495e;
+      padding: 10px 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #3498db;
+    }
+    section {
+      padding: 60px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+    .why-work {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .skills-services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .skill, .service {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .skill:hover, .service:hover {
+      transform: translateY(-5px);
+    }
+    .popup {
+      display: none;
+      position: absolute;
+      background: #2c3e50;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      width: 250px;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .skill:hover .popup, .service:hover .popup {
+      display: block;
+    }
+    .projects-tabs {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .projects-tabs button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .projects-tabs button.active {
+      background: #2c3e50;
+    }
+    .projects-tabs button:hover {
+      background: #2980b9;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .project-card img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .project-card h4 {
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    .project-card p {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .project-card a {
+      display: inline-block;
+      margin: 5px;
+      padding: 8px 15px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .project-card a:hover {
+      background: #2980b9;
+    }
+    .experience-grid, .achievements-grid, .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+    .experience-card, .achievement-card, .testimonial-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background: #2980b9;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Mohamed Elmenisy</h1>
+      <a href="#" class="download-cv">Download CV</a>
+    </div>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#why-work">Why Work With Me</a></li>
+      <li><a href="#skills-services">Skills & Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="why-work">
+    <div class="container">
+      <h2>Why Work With Me?</h2>
+      <div class="why-work">
+        <p>I don’t just build systems—I solve problems. My blend of training, operations, and automation expertise reduces manual effort, scales efficiency, and keeps remote teams thriving. Passionate about Front-End development, I craft tools like Ticket Maker and Infini Base to drive impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills-services">
+    <div class="container">
+      <h2>My Skills & Services</h2>
+      <div class="skills-services">
+        <div>
+          <h3>My Skills</h3>
+          <div class="skill">Customer Service
+            <div class="popup">
+              <p><strong>What is it?</strong> Expertise in handling customer interactions.</p>
+              <p><strong>What I did:</strong> Streamlined support via Ticket Maker.</p>
+              <p><strong>How it helps:</strong> Enhances customer satisfaction and efficiency.</p>
+            </div>
+          </div>
+          <div class="skill">Operations
+            <div class="popup">
+              <p><strong>What is it?</strong> Managing and optimizing workflows.</p>
+              <p><strong>What I did:</strong> Automated processes at The Chefz.</p>
+              <p><strong>How it helps:</strong> Reduces costs and improves scalability.</p>
+            </div>
+          </div>
+          <div class="skill">System Design
+            <div class="popup">
+              <p><strongWhat is it?</strong> Creating efficient systems.</p>
+              <p><strong>What I did:</strong> Built Team Management System.</p>
+              <p><strong>How it helps:</strong> Boosts operational efficiency.</p>
+            </div>
+          </div>
+          <div class="skill">Technical Support
+            <div class="popup">
+              <p><strong>What is it?</strong> Resolving technical issues.</p>
+              <p><strong>What I did:</strong> Supported systems at Elshawwa Group.</p>
+              <p><strong>How it helps:</strong> Ensures smooth operations.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Services I Offer</h3>
+          <div class="service">Building Training Systems
+            <div class="popup">
+              <p><strong>What is it?</strong> Designing training platforms.</p>
+              <p><strong>What I did:</strong> Developed Coaching Platform.</p>
+              <p><strong>How it helps:</strong> Enhances team skills and performance.</p>
+            </div>
+          </div>
+          <div class="service">Automating Workflows
+            <div class="popup">
+              <p><strong>What is it?</strong> Streamlining processes.</p>
+              <p><strong>What I did:</strong> Created Ticket Maker with Zapier.</p>
+              <p><strong>How it helps:</strong> Saves time and reduces errors.</p>
+            </div>
+          </div>
+          <div class="service">Leadership Coaching
+            <div class="popup">
+              <p><strong>What is it?</strong> Guiding teams to success.</p>
+              <p><strong>What I did:</strong> Coached 40+ agents.</p>
+              <p><strong>How it helps:</strong> Builds strong leadership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>My Works</h2>
+      <div class="projects-tabs">
+        <button class="tab active" data-tab="all">All</button>
+        <button class="tab" data-tab="websites">Websites</button>
+        <button class="tab" data-tab="tools">Tools</button>
+        <button class="tab" data-tab="dashboards">Google Sheets / Excel Dashboards</button>
+        <button class="tab" data-tab="platforms">Team Work / Platforms</button>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card" data-category="tools dashboards">
+          <h4>Ticket Maker</h4>
+          <img src="ticket-maker-placeholder.jpg" alt="Ticket Maker">
+          <p><strong>Objective:</strong> Automate support process</p>
+          <p><strong>Tool:</strong> Google Sheets + Zapier</p>
+          <p><strong>Result:</strong> Saved ~200,000 SAR/month</p>
+          <a href="https://mohamedelmenisy.github.io/elevo-core-flow/" target="_blank">🔗 Live Preview</a>
+        </div>
+        <div class="project-card" data-category="platforms">
+          <h4>Infini Base</h4>
+          <img src="infini-base-placeholder.jpg" alt="Infini Base">
+          <p><strong>Objective:</strong> Centralize knowledge</p>
+          <p><strong>Tool:</strong> Notion</p>
+          <p><strong>Result:</strong> Enhanced team collaboration</p>
+          <a href="https://mohamedelmenisy.github.io/infini-base/" target="_blank">🔗 Live Preview</a>
+        </div>
+        <div class="project-card" data-category="dashboards">
+          <h4>Team Management System</h4>
+          <img src="team-management-placeholder.jpg" alt="Team Management System">
+          <p><strong>Objective:</strong> Track performance</p>
+          <p><strong>Tool:</strong> Google Sheets</p>
+          <p><strong>Result:</strong> Improved analytics</p>
+          <a href="https://mohamedelmenisy.github.io/team-platform/" target="_blank">🔗 Live Preview</a>
+        </div>
+        <div class="project-card" data-category="platforms">
+          <h4>Coaching Platform</h4>
+          <img src="coaching-platform-placeholder.jpg" alt="Coaching Platform">
+          <p><strong>Objective:</strong> Support leadership</p>
+          <p><strong>Tool:</strong> Internal CMS</p>
+          <p><strong>Result:</strong> Delivered training platform</p>
+          <a href="https://mohamedelmenisy.github.io/coaching-leadership-course/" target="_blank">🔗 Live Preview</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="experience-grid">
+        <div class="experience-card">
+          <h4>2024 - Present</h4>
+          <p>Senior L&D Specialist – The Chefz</p>
+        </div>
+        <div class="experience-card">
+          <h4>2022 - 2024</h4>
+          <p>Operations Advisor – The Chefz</p>
+        </div>
+        <div class="experience-card">
+          <h4>2020 - 2022</h4>
+          <p>Customer Service Representative – Elshawwa Group</p>
+        </div>
+        <div class="experience-card">
+          <h4>2018 - 2020</h4>
+          <p>Reservation Specialist – Farahat Tours</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="container">
+      <h2>Achievements</h2>
+      <div class="achievements-grid">
+        <div class="achievement-card">Saved 200,000 SAR</div>
+        <div class="achievement-card">Reduced ticket time by 60%</div>
+        <div class="achievement-card">Onboarded 40+ agents</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <h2>What People Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p>“Mohamed is solution-driven, fast and thinks outside the box.”</p>
+          <p><strong>– Manager</strong></p>
+        </div>
+        <div class="testimonial-card">
+          <p>“Strong in training and coaching follow-up.”</p>
+          <p><strong>– Team Lead</strong></p>
+        </div>
+        <div class="testimonial-card">
+          <p>“Explains clearly and aligns with goals fast.”</p>
+          <p><strong>– Colleague</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Info</h2>
+      <div class="contact-form">
+        <p><strong>Email:</strong> mmenisy17@gmail.com</p>
+        <p><strong>Phone:</strong> +201014527321</p>
+        <p><strong>Address:</strong> Alexandria, Egypt</p>
+        <h3>Let’s Work Together</h3>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Copyright 2025. All rights reserved by Mohamed Elmenisy</p>
+  </footer>
+
+  <script>
+    ScrollReveal().reveal('section', {
+      delay: 200,
+      distance: '50px',
+      origin: 'bottom',
+      duration: 800,
+      easing: 'ease-in-out'
+    });
+
+    const tabs = document.querySelectorAll('.projects-tabs button');
+    const projects = document.querySelectorAll('.project-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const category = tab.dataset.tab;
+        projects.forEach(project => {
+          if (category === 'all' || project.dataset.category.includes(category)) {
+            project.style.display = 'block';
+          } else {
+            project.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
