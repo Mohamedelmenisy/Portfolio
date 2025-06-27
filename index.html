@@ -3,35 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mohamed Menisy - Portfolio of a remote L&D & Operations expert. Explore my projects like Ticket Maker and Infini Base.">
-  <meta name="author" content="Mohamed Menisy">
+  <meta name="description" content="Mohamed Elmenisy - Portfolio of a remote L&D & Operations expert. Explore my projects like Ticket Maker and Infini Base.">
+  <meta name="author" content="Mohamed Elmenisy">
   <meta property="og:image" content="https://mohamedelmenisy.github.io/Portfolio/mohamed-photo.jpg">
-  <title>Mohamed Menisy Portfolio</title>
+  <title>Mohamed Elmenisy Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js"></script>
   <style>
     body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding-top: 80px; transition: all 0.3s; position: relative; overflow-x: hidden; }
     #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-    .theme-toggle { position: fixed; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; z-index: 1000; }
-    #scroll-bar { position: fixed; top: 0; left: 0; height: 4px; background: #6b46c1; width: 0%; z-index: 9999; }
+    #scroll-bar { position: fixed; top: 0; left: 0; height: 4px; background: #6b46c1; width: 0%; z-index: 9999; transition: width 0.4s ease-in-out; }
+    .theme-toggle { position: fixed; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; z-index: 1000; transition: transform 0.3s; }
+    .theme-toggle:hover { transform: scale(1.1); }
     .nav { position: fixed; top: 0; width: 100%; background: #1a1a1a; padding: 15px 30px; display: flex; justify-content: center; z-index: 1000; }
-    .nav a { color: #e0e0e0; margin: 0 15px; text-decoration: none; font-weight: 500; }
+    .nav a { color: #e0e0e0; margin: 0 15px; text-decoration: none; font-weight: 500; transition: color 0.3s; }
     .nav a:hover { color: #6b46c1; }
     .hero { display: flex; align-items: center; padding: 20px; max-width: 1200px; margin: 0 auto; gap: 15px; }
     .hero-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; cursor: pointer; }
     .hero-text { text-align: left; flex-grow: 1; }
     .hero-text h1 { font-size: 2.5rem; margin: 0 0 5px; font-weight: 700; letter-spacing: 1px; }
-    .hero-text p { font-size: 1.2rem; opacity: 0.9; margin: 0; }
-    .btn-download { background: #6b46c1; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s; }
-    .btn-download:hover { background: #553c9a; }
-    .about, .skills, .projects, .contact, .testimonials, .achievements, .timeline { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-    .card, .project-card { background: #252525; padding: 20px; margin: 10px; border-radius: 10px; text-align: center; width: 180px; display: inline-block; vertical-align: top; transition: transform 0.3s; cursor: pointer; }
+    .hero-text p { font-size: 1.2rem; opacity: 0.9; margin: 0 0 15px; }
+    .btn-download { background: #6b46c1; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s, transform 0.3s; margin-left: 10px; }
+    .btn-download:hover { background: #553c9a; transform: scale(1.05); }
+    .about, .skills, .projects, .contact, .testimonials, .achievements, .timeline, .systems { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    .card, .project-card { background: #252525; padding: 20px; margin: 10px; border-radius: 10px; text-align: center; width: 180px; display: inline-block; vertical-align: top; transition: transform 0.3s; cursor: pointer; position: relative; }
     .card:hover, .project-card:hover { transform: scale(1.05); }
     .project-card { width: 280px; }
     .project-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
     .project-card h3 { margin: 8px 0 4px; font-size: 1.3rem; }
     .project-card p { color: #bbb; font-size: 0.9rem; }
     .info-popup { display: none; position: fixed; background: #1a1a1a; padding: 20px; border-radius: 10px; z-index: 1000; color: #fff; max-width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+    .tooltip { visibility: hidden; background: #333; color: #fff; padding: 5px 10px; border-radius: 4px; position: absolute; z-index: 1; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; }
+    .card:hover .tooltip { visibility: visible; opacity: 1; }
     .timeline { position: relative; }
     .timeline-item { border-left: 2px solid #6b46c1; padding-left: 20px; margin-bottom: 20px; position: relative; }
     .timeline-item h4 { color: #6b46c1; margin: 0 0 5px; }
@@ -47,9 +51,10 @@
     .social-info form { display: flex; flex-direction: column; gap: 10px; }
     .social-info input, .social-info textarea { padding: 12px 15px; background: #333; border: none; border-radius: 5px; color: #fff; }
     .social-info textarea { height: 100px; }
-    .social-info button { padding: 10px 20px; background: #6b46c1; border: none; border-radius: 5px; color: #fff; cursor: pointer; }
-    .social-info button:hover { background: #553c9a; }
-    .social-info a { color: #fff; margin: 0 10px; font-size: 1.5rem; }
+    .social-info button { padding: 10px 20px; background: #6b46c1; border: none; border-radius: 5px; color: #fff; cursor: pointer; transition: background 0.3s, transform 0.3s; }
+    .social-info button:hover { background: #553c9a; transform: scale(1.05); }
+    .social-info a { color: #fff; margin: 0 10px; font-size: 1.5rem; transition: color 0.3s; }
+    .social-info a:hover { color: #6b46c1; }
     footer { text-align: center; padding: 20px; background: #1a1a1a; }
     footer .logo { font-size: 2rem; font-weight: bold; color: #6b46c1; }
     .scroll-indicator { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; }
@@ -80,14 +85,14 @@
     <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
   </div>
-  <i class="fas fa-adjust theme-toggle" onclick="toggleTheme()"></i>
+  <i class="fas fa-moon theme-toggle" onclick="toggleTheme()"></i>
   <div class="scroll-indicator">
     <div></div><div></div><div></div><div></div><div></div>
   </div>
   <section class="hero">
-    <img src="mohamed-photo.jpg" alt="Mohamed Menisy" class="hero-img" onclick="easterEgg()">
+    <img src="mohamed-photo.jpg" alt="Mohamed Elmenisy" class="hero-img" onclick="easterEgg()">
     <div class="hero-text">
-      <h1>Mohamed Menisy</h1>
+      <h1>Mohamed Elmenisy</h1>
       <p>Operations & L&D Specialist</p>
       <a href="Mohamed_Elmenisy_CV.pdf" download class="btn-download">Download CV</a>
     </div>
@@ -99,38 +104,48 @@
   </section>
 
   <section id="skills" class="skills">
-    <h2>Skills & Services</h2>
-    <div class="card" onclick="showInfo('customer-service')">Customer Service 🟩</div>
-    <div class="card" onclick="showInfo('operations')">Operations 🟦</div>
-    <div class="card" onclick="showInfo('system-design')">System Design 🟧</div>
-    <div class="card" onclick="showInfo('technical-support')">Technical Support 🟫</div>
+    <h2>My Skills & Services</h2>
+    <div class="skills-row">
+      <h3>My Skills</h3>
+      <div class="card" onmouseover="showTooltip(this, 'customer-service')">Customer Service 🟩</div>
+      <div class="card" onmouseover="showTooltip(this, 'operations')">Operations 🟦</div>
+      <div class="card" onmouseover="showTooltip(this, 'system-design')">System Design 🟧</div>
+      <div class="card" onmouseover="showTooltip(this, 'technical-support')">Technical Support 🟫</div>
+    </div>
+    <div class="skills-row">
+      <h3>Services I Offer</h3>
+      <div class="card" onmouseover="showTooltip(this, 'training-systems')">Building Training Systems 🟩</div>
+      <div class="card" onmouseover="showTooltip(this, 'automation')">Automating Workflows 🟦</div>
+      <div class="card" onmouseover="showTooltip(this, 'coaching')">Leadership Coaching 🟧</div>
+    </div>
     <div id="info-popup" class="info-popup"></div>
   </section>
 
   <section id="projects" class="projects">
     <h2>Projects</h2>
-    <div class="project-card" onclick="showInfo('ticket-maker')">
+    <div class="project-card" onclick="showProjectInfo('ticket-maker')">
       <img src="ticket-maker.jpg" alt="Ticket Maker" style="display: none;">
       <div style="height: 180px; background: #444; display: flex; align-items: center; justify-content: center;">[Image: Ticket Maker]</div>
       <h3>Ticket Maker</h3>
-      <p>Saved 200,000 SAR/month</p>
+      <p>Objective: Automate support process | Tool: Google Sheets + Zapier | Result: Saved ~200,000 SAR/month</p>
     </div>
-    <div class="project-card" onclick="showInfo('infini-base')">
+    <div class="project-card" onclick="showProjectInfo('infini-base')">
       <img src="infini-base.jpg" alt="Infini Base">
       <h3>Infini Base</h3>
-      <p>Centralized Knowledge Platform</p>
+      <p>Objective: Centralize knowledge | Tool: Notion | Result: Enhanced team collaboration</p>
     </div>
-    <div class="project-card" onclick="showInfo('core-flow')">
+    <div class="project-card" onclick="showProjectInfo('core-flow')">
       <img src="core-flow.jpg" alt="Core Flow" style="display: none;">
       <div style="height: 180px; background: #444; display: flex; align-items: center; justify-content: center;">[Image: Core Flow]</div>
       <h3>Core Flow</h3>
-      <p>Performance & Ticket Tracking</p>
+      <p>Objective: Track performance | Tool: Google Sheets | Result: Improved analytics</p>
     </div>
-    <div class="project-card" onclick="showInfo('coaching-platform')">
+    <div class="project-card" onclick="showProjectInfo('coaching-platform')">
       <img src="coaching-platform.jpg" alt="Coaching Platform">
       <h3>Coaching Platform</h3>
-      <p>Leadership & Coaching Solution</p>
+      <p>Objective: Support leadership | Tool: Internal CMS | Result: Delivered training platform</p>
     </div>
+    <div id="project-info" class="info-popup"></div>
   </section>
 
   <section id="experience" class="timeline">
@@ -155,15 +170,26 @@
 
   <section class="testimonials">
     <h2>What People Say</h2>
-    <div class="card">“Mohamed’s Ticket Maker system saved us months of work!” – Manager</div>
-    <div class="card">“His leadership training is top-notch!” – Colleague</div>
+    <div class="card">“Mohamed is a solution-driven thinker who delivers results swiftly and effectively.” – Manager</div>
+    <div class="card">“He excels at innovative problem-solving and simplifying complex concepts.” – Colleague</div>
+    <div class="card">“Highly skilled in training and coaching, with consistent follow-up.” – Team Lead</div>
+    <div class="card">“Goal-oriented and detail-focused, owning his projects with dedication.” – Supervisor</div>
   </section>
 
   <section class="achievements">
     <h2>Achievements</h2>
-    <div class="card" data-target="200000">✔ Saved +200,000 SAR</div>
+    <div class="card" data-target="200000">✔ Saved 200,000 SAR</div>
     <div class="card" data-target="60">✔ Reduced ticket time by 60%</div>
     <div class="card" data-target="40">✔ Onboarded 40+ agents</div>
+  </section>
+
+  <section class="systems">
+    <h2>Systems I Built</h2>
+    <p>View examples of tools I’ve created to streamline operations:</p>
+    <ul>
+      <li><a href="#" target="_blank">Ticket Maker (Google Sheet Demo)</a></li>
+      <li><a href="#" target="_blank">Infini Base (Notion Dashboard)</a></li>
+    </ul>
   </section>
 
   <section id="contact" class="contact">
@@ -191,7 +217,7 @@
   </section>
   <footer>
     <div class="logo">ME</div>
-    <p>Copyright 2025. All rights reserved by Mohamed Menisy</p>
+    <p>Copyright 2025. All rights reserved by Mohamed Elmenisy</p>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -207,27 +233,57 @@
     gsap.from(".achievements .card", { opacity: 0, y: 50, stagger: 0.2, duration: 1, scrollTrigger: ".achievements" });
 
     const infoPopup = document.getElementById('info-popup');
-    const infoData = {
-      'customer-service': 'Over 5 years managing inquiries and ensuring satisfaction at Elshawwa Group and The Chefz.',
-      'operations': 'Optimized workflows and coordinated stakeholders for efficiency at The Chefz.',
-      'system-design': 'Designed systems like Ticket Maker and Infini Base for automation and knowledge management.',
-      'technical-support': 'Provided technical assistance and maintained SOPs for seamless operations.',
-      'ticket-maker': 'Objective: Streamline ticket management. Result: Saved 200,000 SAR/month.',
-      'infini-base': 'Objective: Centralize knowledge. Result: Enhanced team collaboration.',
-      'core-flow': 'Objective: Track performance. Result: Improved analytics and productivity.',
-      'coaching-platform': 'Objective: Support leadership. Result: Delivered training platform.'
+    const projectInfo = document.getElementById('project-info');
+    const tooltipData = {
+      'customer-service': 'Managed inquiries and ensured satisfaction at Elshawwa Group and The Chefz. Strong communication skills provide seamless support.',
+      'operations': 'Optimized workflows and coordinated stakeholders for efficiency at The Chefz. Proven ability to enhance operational performance.',
+      'system-design': 'Built internal tools like Ticket Maker & Infini Base to automate manual processes and boost efficiency. Innovative problem-solving.',
+      'technical-support': 'Provided assistance and maintained SOPs for seamless operations. Detail-oriented and reliable.',
+      'training-systems': 'Designed training systems to improve team skills at The Chefz. Expert in creating scalable learning solutions.',
+      'automation': 'Automated workflows with tools like Zapier, saving time and resources. Focused on process optimization.',
+      'coaching': 'Delivered leadership coaching programs, enhancing team performance. Strong follow-up and mentoring skills.'
     };
 
-    function showInfo(key) {
-      infoPopup.textContent = infoData[key] || 'Details coming soon!';
-      infoPopup.style.display = 'block';
-      infoPopup.style.left = (window.innerWidth - infoPopup.offsetWidth) / 2 + 'px';
-      infoPopup.style.top = (window.innerHeight - infoPopup.offsetHeight) / 2 + 'px';
-      setTimeout(() => infoPopup.style.display = 'none', 5000);
+    function showTooltip(card, key) {
+      const tooltip = card.querySelector('.tooltip') || document.createElement('div');
+      tooltip.className = 'tooltip';
+      tooltip.textContent = tooltipData[key];
+      if (!card.querySelector('.tooltip')) card.appendChild(tooltip);
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+    }
+
+    function hideTooltip(card) {
+      const tooltip = card.querySelector('.tooltip');
+      if (tooltip) tooltip.style.opacity = '0';
+      setTimeout(() => tooltip && (tooltip.style.visibility = 'hidden'), 300);
+    }
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseover', () => showTooltip(card, card.getAttribute('onmouseover').split(',')[1].replace('showTooltip(this, ', '').replace(')', '')));
+      card.addEventListener('mouseout', () => hideTooltip(card));
+    });
+
+    const projectData = {
+      'ticket-maker': 'Goal: Automate support process | Built: Google Sheets + Zapier integration | Impact: Saved ~200,000 SAR/month with automated ticketing.',
+      'infini-base': 'Goal: Centralize knowledge | Built: Notion-based knowledge base | Impact: Improved collaboration across teams.',
+      'core-flow': 'Goal: Track performance | Built: Google Sheets dashboard | Impact: Enhanced real-time analytics and productivity.',
+      'coaching-platform': 'Goal: Support leadership | Built: Internal CMS platform | Impact: Delivered scalable training and coaching solutions.'
+    };
+
+    function showProjectInfo(key) {
+      projectInfo.textContent = projectData[key] || 'More details coming soon!';
+      projectInfo.style.display = 'block';
+      projectInfo.style.left = (window.innerWidth - projectInfo.offsetWidth) / 2 + 'px';
+      projectInfo.style.top = (window.innerHeight - projectInfo.offsetHeight) / 2 + 'px';
+      setTimeout(() => projectInfo.style.display = 'none', 5000);
     }
 
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.card') && !e.target.closest('.project-card')) infoPopup.style.display = 'none';
+      if (!e.target.closest('.card') && !e.target.closest('.project-card')) {
+        infoPopup.style.display = 'none';
+        projectInfo.style.display = 'none';
+      }
     });
 
     document.querySelectorAll('.nav a').forEach(anchor => {
@@ -240,11 +296,15 @@
 
     function toggleTheme() {
       document.body.classList.toggle('light-mode');
+      const icon = document.querySelector('.theme-toggle');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
       localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
     }
 
     if (localStorage.getItem('theme') === 'light') {
       document.body.classList.add('light-mode');
+      document.querySelector('.theme-toggle').classList.replace('fa-moon', 'fa-sun');
     }
 
     function easterEgg() {
