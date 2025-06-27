@@ -7,7 +7,7 @@
   <meta name="author" content="Mohamed Elmenisy">
   <meta property="og:image" content="https://mohamedelmenisy.github.io/Portfolio/mohamed-photo.jpg">
   <title>Mohamed Elmenisy Portfolio</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js"></script>
   <style>
@@ -27,12 +27,13 @@
     .btn-download { background: #6b46c1; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s, transform 0.3s; margin-left: 10px; }
     .btn-download:hover { background: #553c9a; transform: scale(1.05); }
     .about, .skills, .projects, .contact, .testimonials, .achievements, .timeline, .systems { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-    .card, .project-card { background: #252525; padding: 20px; margin: 10px; border-radius: 10px; text-align: center; width: 180px; display: inline-block; vertical-align: top; transition: transform 0.3s; cursor: pointer; position: relative; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+    .card, .project-card { background: #252525; padding: 20px; margin: 10px 0; border-radius: 10px; text-align: center; transition: transform 0.3s; cursor: pointer; position: relative; }
     .card:hover, .project-card:hover { transform: scale(1.05); }
-    .project-card { width: 280px; }
+    .project-card { width: 100%; }
     .project-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
     .project-card h3 { margin: 8px 0 4px; font-size: 1.3rem; }
-    .project-card p { color: #bbb; font-size: 0.9rem; }
+    .project-card p { color: #bbb; font-size: 0.9rem; margin: 5px 0; }
     .info-popup { display: none; position: fixed; background: #1a1a1a; padding: 20px; border-radius: 10px; z-index: 1000; color: #fff; max-width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
     .tooltip { visibility: hidden; background: #333; color: #fff; padding: 5px 10px; border-radius: 4px; position: absolute; z-index: 1; bottom: 125%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; }
     .card:hover .tooltip { visibility: visible; opacity: 1; }
@@ -105,18 +106,17 @@
 
   <section id="skills" class="skills">
     <h2>My Skills & Services</h2>
-    <div class="skills-row">
+    <div class="skills-grid">
       <h3>My Skills</h3>
-      <div class="card" onmouseover="showTooltip(this, 'customer-service')">Customer Service 🟩</div>
-      <div class="card" onmouseover="showTooltip(this, 'operations')">Operations 🟦</div>
-      <div class="card" onmouseover="showTooltip(this, 'system-design')">System Design 🟧</div>
-      <div class="card" onmouseover="showTooltip(this, 'technical-support')">Technical Support 🟫</div>
-    </div>
-    <div class="skills-row">
+      <div class="card" onmouseover="showTooltip(this, 'customer-service')">🟩 Customer Service</div>
+      <div class="card" onmouseover="showTooltip(this, 'operations')">🟦 Operations</div>
+      <div class="card" onmouseover="showTooltip(this, 'system-design')">🟧 System Design</div>
+      <div class="card" onmouseover="showTooltip(this, 'technical-support')">🟫 Technical Support</div>
+      <hr style="width: 100%; border: 0; border-top: 1px solid #6b46c1; margin: 20px 0;">
       <h3>Services I Offer</h3>
-      <div class="card" onmouseover="showTooltip(this, 'training-systems')">Building Training Systems 🟩</div>
-      <div class="card" onmouseover="showTooltip(this, 'automation')">Automating Workflows 🟦</div>
-      <div class="card" onmouseover="showTooltip(this, 'coaching')">Leadership Coaching 🟧</div>
+      <div class="card" onmouseover="showTooltip(this, 'training-systems')">🟩 Building Training Systems</div>
+      <div class="card" onmouseover="showTooltip(this, 'automation')">🟦 Automating Workflows</div>
+      <div class="card" onmouseover="showTooltip(this, 'coaching')">🟧 Leadership Coaching</div>
     </div>
     <div id="info-popup" class="info-popup"></div>
   </section>
@@ -127,23 +127,23 @@
       <img src="ticket-maker.jpg" alt="Ticket Maker" style="display: none;">
       <div style="height: 180px; background: #444; display: flex; align-items: center; justify-content: center;">[Image: Ticket Maker]</div>
       <h3>Ticket Maker</h3>
-      <p>Objective: Automate support process | Tool: Google Sheets + Zapier | Result: Saved ~200,000 SAR/month</p>
+      <p>Objective: Automate support process<br>Tool: Google Sheets + Zapier<br>Result: Saved ~200,000 SAR/month</p>
     </div>
     <div class="project-card" onclick="showProjectInfo('infini-base')">
       <img src="infini-base.jpg" alt="Infini Base">
       <h3>Infini Base</h3>
-      <p>Objective: Centralize knowledge | Tool: Notion | Result: Enhanced team collaboration</p>
+      <p>Objective: Centralize knowledge<br>Tool: Notion<br>Result: Enhanced team collaboration</p>
     </div>
-    <div class="project-card" onclick="showProjectInfo('core-flow')">
-      <img src="core-flow.jpg" alt="Core Flow" style="display: none;">
-      <div style="height: 180px; background: #444; display: flex; align-items: center; justify-content: center;">[Image: Core Flow]</div>
-      <h3>Core Flow</h3>
-      <p>Objective: Track performance | Tool: Google Sheets | Result: Improved analytics</p>
+    <div class="project-card" onclick="showProjectInfo('team-management-system')">
+      <img src="core-flow.jpg" alt="Team Management System" style="display: none;">
+      <div style="height: 180px; background: #444; display: flex; align-items: center; justify-content: center;">[Image: Team Management System]</div>
+      <h3>Team Management System</h3>
+      <p>Objective: Track performance<br>Tool: Google Sheets<br>Result: Improved analytics</p>
     </div>
     <div class="project-card" onclick="showProjectInfo('coaching-platform')">
       <img src="coaching-platform.jpg" alt="Coaching Platform">
       <h3>Coaching Platform</h3>
-      <p>Objective: Support leadership | Tool: Internal CMS | Result: Delivered training platform</p>
+      <p>Objective: Support leadership<br>Tool: Internal CMS<br>Result: Delivered training platform</p>
     </div>
     <div id="project-info" class="info-popup"></div>
   </section>
@@ -187,9 +187,12 @@
     <h2>Systems I Built</h2>
     <p>View examples of tools I’ve created to streamline operations:</p>
     <ul>
-      <li><a href="#" target="_blank">Ticket Maker (Google Sheet Demo)</a></li>
-      <li><a href="#" target="_blank">Infini Base (Notion Dashboard)</a></li>
+      <li><a href="https://mohamedelmenisy.github.io/elevo-core-flow/" target="_blank">Team Management System (Google Sheet)</a></li>
+      <li><a href="https://mohamedelmenisy.github.io/infini-base/" target="_blank">Infini Base (Notion Dashboard)</a></li>
+      <li><a href="https://mohamedelmenisy.github.io/coaching-leadership-course/" target="_blank">Coaching Platform</a></li>
+      <li><a href="https://mohamedelmenisy.github.io/team-platform/" target="_blank">Team Collaboration System</a></li>
     </ul>
+    <a href="https://docs.google.com/spreadsheets/d/your-sheet-id-here/view" target="_blank" class="btn-download" style="margin-top: 15px;">View Ticket Maker (Live Google Sheet Demo)</a>
   </section>
 
   <section id="contact" class="contact">
@@ -267,7 +270,7 @@
     const projectData = {
       'ticket-maker': 'Goal: Automate support process | Built: Google Sheets + Zapier integration | Impact: Saved ~200,000 SAR/month with automated ticketing.',
       'infini-base': 'Goal: Centralize knowledge | Built: Notion-based knowledge base | Impact: Improved collaboration across teams.',
-      'core-flow': 'Goal: Track performance | Built: Google Sheets dashboard | Impact: Enhanced real-time analytics and productivity.',
+      'team-management-system': 'Goal: Track performance | Built: Google Sheets dashboard | Impact: Enhanced real-time analytics and productivity.',
       'coaching-platform': 'Goal: Support leadership | Built: Internal CMS platform | Impact: Delivered scalable training and coaching solutions.'
     };
 
