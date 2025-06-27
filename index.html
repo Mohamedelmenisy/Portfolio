@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mohamed Elmenisy | Portfolio</title>
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/139457899?v=4">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #f9fafb;
+      background: linear-gradient(135deg, #ecf0f3, #f9fafb);
       color: #1f2937;
       line-height: 1.6;
       padding: 2rem;
@@ -19,7 +20,7 @@
       margin-bottom: 2rem;
     }
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: #2563eb;
     }
     header p {
@@ -34,26 +35,48 @@
       text-decoration: none;
       color: #10b981;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #059669;
     }
     section {
-      margin: 2rem 0;
-      padding: 1rem 2rem;
+      margin: 2rem auto;
+      padding: 2rem;
       background: white;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      max-width: 800px;
     }
     h2 {
-      color: #1f2937;
+      color: #111827;
       margin-bottom: 1rem;
+      font-size: 1.8rem;
     }
     ul li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.7rem;
     }
     footer {
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 4rem;
       font-size: 0.9rem;
       color: #6b7280;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta a {
+      background: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .cta a:hover {
+      background: #1e40af;
     }
   </style>
 </head>
@@ -72,26 +95,26 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I’m Mohamed, a Learning & Development specialist with 5+ years of experience in customer service, operations, and internal systems. I build smart tools and training workflows for remote teams using Notion, Google Sheets, automation tools, and more.
+      I’m Mohamed, a Learning & Development specialist with over 5 years of experience in customer service, operations, and internal systems. I build smart tools, automate workflows, and design training ecosystems using Notion, Google Sheets, Zapier, and Airtable. My focus is on improving team performance, reducing manual tasks, and enabling fast onboarding and knowledge sharing across remote teams.
     </p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <ul>
-      <li><strong>Ticket Maker System</strong> — Saved SAR 200K/month by automating support ticket management.</li>
-      <li><strong>Infini Base</strong> — Built a centralized knowledge base for Ops, Support, and Training teams.</li>
-      <li><strong>Elevo Core Flow</strong> — Dashboard for live ticket tracking & analytics.</li>
+      <li><strong>Ticket Maker System</strong> — Reduced support costs by SAR 200K/month by automating ticket management and reporting.</li>
+      <li><strong>Infini Base</strong> — A centralized, searchable knowledge hub for Ops, Support, and L&D teams.</li>
+      <li><strong>Elevo Core Flow</strong> — Built a dashboard for real-time ticket analytics and performance KPIs.</li>
     </ul>
   </section>
 
   <section id="skills">
     <h2>Skills & Tools</h2>
     <ul>
-      <li>Google Sheets, Docs, Excel</li>
-      <li>Notion, Airtable, Confluence</li>
-      <li>Zapier, Make (Integromat)</li>
-      <li>Training System Design & SOP Documentation</li>
+      <li>🧠 Google Sheets, Docs, Excel – Advanced formulas, dashboards, and templates</li>
+      <li>📁 Notion, Airtable, Confluence – System documentation & workflow design</li>
+      <li>⚙️ Zapier, Make (Integromat) – Workflow automation & integrations</li>
+      <li>🎓 Training system design, onboarding flows, and SOP documentation</li>
     </ul>
   </section>
 
@@ -99,10 +122,13 @@
     <h2>Contact</h2>
     <p>Email: <a href="mailto:mmenisy17@gmail.com">mmenisy17@gmail.com</a></p>
     <p>LinkedIn: <a href="https://linkedin.com/in/mohamedmenisy17" target="_blank">linkedin.com/in/mohamedmenisy17</a></p>
+    <div class="cta">
+      <a href="/Mohamed_Elmenisy_CV.pdf" download>Download My CV</a>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Mohamed Elmenisy. All rights reserved.
+    &copy; 2025 Mohamed Elmenisy. Built with ❤️ using GitHub Pages.
   </footer>
 </body>
 </html>
