@@ -3,87 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mohamed Menisy - Portfolio of a remote L&D & Operations expert. Explore my projects like Ticket Maker and Infini Base.">
+  <meta name="author" content="Mohamed Menisy">
+  <meta property="og:image" content="https://mohamedelmenisy.github.io/Portfolio/mohamed-photo.jpg">
   <title>Mohamed Menisy Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js"></script>
   <style>
-    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding-top: 80px; transition: all 0.3s; }
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding-top: 80px; transition: all 0.3s; position: relative; overflow-x: hidden; }
+    #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
     .theme-toggle { position: fixed; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; z-index: 1000; }
-    .nav { position: fixed; top: 0; width: 100%; background: #1a1a1a; padding: 10px 20px; display: flex; justify-content: center; z-index: 1000; }
+    #scroll-bar { position: fixed; top: 0; left: 0; height: 4px; background: #6b46c1; width: 0%; z-index: 9999; }
+    .nav { position: fixed; top: 0; width: 100%; background: #1a1a1a; padding: 15px 30px; display: flex; justify-content: center; z-index: 1000; }
     .nav a { color: #e0e0e0; margin: 0 15px; text-decoration: none; font-weight: 500; }
     .nav a:hover { color: #6b46c1; }
     .hero { display: flex; align-items: center; padding: 20px; max-width: 1200px; margin: 0 auto; gap: 15px; }
-    .hero-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
+    .hero-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; cursor: pointer; }
     .hero-text { text-align: left; flex-grow: 1; }
     .hero-text h1 { font-size: 2.5rem; margin: 0 0 5px; font-weight: 700; letter-spacing: 1px; }
     .hero-text p { font-size: 1.2rem; opacity: 0.9; margin: 0; }
-    .about, .skills, .projects, .contact { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-    .card, .project-card { background: #252525; padding: 15px; margin: 10px; border-radius: 10px; text-align: center; width: 180px; display: inline-block; vertical-align: top; transition: transform 0.3s; cursor: pointer; }
+    .btn-download { background: #6b46c1; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s; }
+    .btn-download:hover { background: #553c9a; }
+    .about, .skills, .projects, .contact, .testimonials, .achievements, .timeline { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    .card, .project-card { background: #252525; padding: 20px; margin: 10px; border-radius: 10px; text-align: center; width: 180px; display: inline-block; vertical-align: top; transition: transform 0.3s; cursor: pointer; }
     .card:hover, .project-card:hover { transform: scale(1.05); }
     .project-card { width: 280px; }
     .project-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
     .project-card h3 { margin: 8px 0 4px; font-size: 1.3rem; }
     .project-card p { color: #bbb; font-size: 0.9rem; }
     .info-popup { display: none; position: fixed; background: #1a1a1a; padding: 20px; border-radius: 10px; z-index: 1000; color: #fff; max-width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
-    .threejs-scene { height: 350px; background: #1c1c1c; }
+    .timeline { position: relative; }
+    .timeline-item { border-left: 2px solid #6b46c1; padding-left: 20px; margin-bottom: 20px; position: relative; }
+    .timeline-item h4 { color: #6b46c1; margin: 0 0 5px; }
+    .timeline-item p { margin: 0; }
+    .timeline-item::before { content: ''; position: absolute; left: -6px; top: 0; width: 12px; height: 12px; background: #6b46c1; border-radius: 50%; }
+    .testimonials .card { background: #252525; padding: 15px; margin: 10px; border-radius: 10px; }
+    .achievements .card { background: #252525; padding: 15px; margin: 10px; border-radius: 10px; text-align: center; width: 200px; display: inline-block; vertical-align: top; opacity: 0; }
     .contact { display: flex; justify-content: space-between; }
     .contact-info, .social-info { width: 45%; }
     .contact-info p { margin: 10px 0; }
     .contact-info i { margin-right: 10px; }
     .social-info h3 { margin-bottom: 15px; }
     .social-info form { display: flex; flex-direction: column; gap: 10px; }
-    .social-info input, .social-info textarea { padding: 10px; background: #333; border: none; border-radius: 5px; color: #fff; }
+    .social-info input, .social-info textarea { padding: 12px 15px; background: #333; border: none; border-radius: 5px; color: #fff; }
     .social-info textarea { height: 100px; }
-    .social-info button { padding: 10px; background: #6b46c1; border: none; border-radius: 5px; color: #fff; cursor: pointer; }
+    .social-info button { padding: 10px 20px; background: #6b46c1; border: none; border-radius: 5px; color: #fff; cursor: pointer; }
     .social-info button:hover { background: #553c9a; }
     .social-info a { color: #fff; margin: 0 10px; font-size: 1.5rem; }
     footer { text-align: center; padding: 20px; background: #1a1a1a; }
+    footer .logo { font-size: 2rem; font-weight: bold; color: #6b46c1; }
+    .scroll-indicator { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; }
+    .scroll-indicator div { width: 10px; height: 10px; background: #555; border-radius: 50%; transition: background 0.3s; }
+    .scroll-indicator .active { background: #6b46c1; }
     .light-mode { background: #f0f0f0; color: #333; }
     .light-mode .nav { background: #fff; }
     .light-mode .hero { background: #fff; }
-    .light-mode .card, .light-mode .project-card { background: #e0e0e0; }
-    .light-mode .info-popup { background: #fff; }
+    .light-mode .card, .light-mode .project-card, .light-mode .testimonials .card, .light-mode .achievements .card { background: #e0e0e0; }
+    .light-mode .info-popup { background: #fff; color: #333; }
     .light-mode .threejs-scene { background: #ddd; }
     .light-mode .contact-info p, .light-mode .social-info input, .light-mode .social-info textarea { background: #ddd; }
     .light-mode .social-info button { background: #4a2c8a; }
     .light-mode .social-info button:hover { background: #3a1c6a; }
     .light-mode footer { background: #ddd; }
+    .light-mode .timeline-item { border-left-color: #4a2c8a; }
+    .light-mode .timeline-item::before, .light-mode .timeline-item h4 { color: #4a2c8a; }
     @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; gap: 10px; } .hero-img { margin: 0 auto; } .hero-text h1 { font-size: 1.8rem; } .hero-text p { font-size: 1rem; } .contact { flex-direction: column; gap: 20px; } .contact-info, .social-info { width: 100%; } }
   </style>
 </head>
 <body>
+  <div id="scroll-bar"></div>
+  <div id="particles-js"></div>
   <div class="nav">
-    <a href="#about">About</a>
+    <a href="#about">Why Work With Me</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
     <a href="#contact">Contact</a>
   </div>
   <i class="fas fa-adjust theme-toggle" onclick="toggleTheme()"></i>
+  <div class="scroll-indicator">
+    <div></div><div></div><div></div><div></div><div></div>
+  </div>
   <section class="hero">
-    <img src="mohamed-photo.jpg" alt="Mohamed Menisy" class="hero-img">
+    <img src="mohamed-photo.jpg" alt="Mohamed Menisy" class="hero-img" onclick="easterEgg()">
     <div class="hero-text">
       <h1>Mohamed Menisy</h1>
       <p>Operations & L&D Specialist</p>
+      <a href="Mohamed_Elmenisy_CV.pdf" download class="btn-download">Download CV</a>
     </div>
   </section>
 
   <section id="about" class="about">
-    <h2>About Me</h2>
-    <p>With over 5 years of experience in Operations and Learning & Development, I specialize in customer service, system design, and training. Passionate about Front-End development and programming, I’ve created impactful solutions like the Ticket Maker system (saving 200,000 SAR monthly) and Infini Base, while leading team management and coaching initiatives at The Chefz.</p>
+    <h2>Why Work With Me?</h2>
+    <p>I don’t just build systems—I solve problems. My blend of training, operations, and automation expertise reduces manual effort, scales efficiency, and keeps remote teams thriving. Passionate about Front-End development, I craft tools like Ticket Maker and Infini Base to drive impact.</p>
   </section>
 
   <section id="skills" class="skills">
     <h2>Skills & Services</h2>
-    <div class="card" onclick="showInfo('customer-service')">Customer Service</div>
-    <div class="card" onclick="showInfo('operations')">Operations</div>
-    <div class="card" onclick="showInfo('system-design')">System Design</div>
-    <div class="card" onclick="showInfo('technical-support')">Technical Support</div>
+    <div class="card" onclick="showInfo('customer-service')">Customer Service 🟩</div>
+    <div class="card" onclick="showInfo('operations')">Operations 🟦</div>
+    <div class="card" onclick="showInfo('system-design')">System Design 🟧</div>
+    <div class="card" onclick="showInfo('technical-support')">Technical Support 🟫</div>
     <div id="info-popup" class="info-popup"></div>
   </section>
 
   <section id="projects" class="projects">
     <h2>Projects</h2>
     <div class="project-card" onclick="showInfo('ticket-maker')">
-      <img src="ticket-maker.jpg" alt="Ticket Maker" style="display: none;"> <!-- Placeholder until image is added -->
+      <img src="ticket-maker.jpg" alt="Ticket Maker" style="display: none;">
       <div style="height: 180px; background: #444; display: flex; align-items: center; justify-content: center;">[Image: Ticket Maker]</div>
       <h3>Ticket Maker</h3>
       <p>Saved 200,000 SAR/month</p>
@@ -94,7 +121,7 @@
       <p>Centralized Knowledge Platform</p>
     </div>
     <div class="project-card" onclick="showInfo('core-flow')">
-      <img src="core-flow.jpg" alt="Core Flow" style="display: none;"> <!-- Placeholder until image is added -->
+      <img src="core-flow.jpg" alt="Core Flow" style="display: none;">
       <div style="height: 180px; background: #444; display: flex; align-items: center; justify-content: center;">[Image: Core Flow]</div>
       <h3>Core Flow</h3>
       <p>Performance & Ticket Tracking</p>
@@ -106,6 +133,39 @@
     </div>
   </section>
 
+  <section id="experience" class="timeline">
+    <h2>Experience</h2>
+    <div class="timeline-item">
+      <h4>2024 - Present</h4>
+      <p>Senior L&D Specialist – The Chefz</p>
+    </div>
+    <div class="timeline-item">
+      <h4>2022 - 2024</h4>
+      <p>Operations Advisor – The Chefz</p>
+    </div>
+    <div class="timeline-item">
+      <h4>2020 - 2022</h4>
+      <p>Customer Service Representative – Elshawwa Group</p>
+    </div>
+    <div class="timeline-item">
+      <h4>2018 - 2020</h4>
+      <p>Reservation Specialist – Farahat Tours</p>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>What People Say</h2>
+    <div class="card">“Mohamed’s Ticket Maker system saved us months of work!” – Manager</div>
+    <div class="card">“His leadership training is top-notch!” – Colleague</div>
+  </section>
+
+  <section class="achievements">
+    <h2>Achievements</h2>
+    <div class="card" data-target="200000">✔ Saved +200,000 SAR</div>
+    <div class="card" data-target="60">✔ Reduced ticket time by 60%</div>
+    <div class="card" data-target="40">✔ Onboarded 40+ agents</div>
+  </section>
+
   <section id="contact" class="contact">
     <h2>Contact Info</h2>
     <div class="contact-info">
@@ -114,7 +174,7 @@
       <p><i class="fas fa-map-marker-alt"></i> Address: Alexandria, Egypt</p>
     </div>
     <div class="social-info">
-      <h3>Let’s Work Together</h3>
+      <h2>Let’s Work Together</h2>
       <form>
         <input type="text" placeholder="Name*" required><br>
         <input type="email" placeholder="Email*" required><br>
@@ -130,6 +190,7 @@
     </div>
   </section>
   <footer>
+    <div class="logo">ME</div>
     <p>Copyright 2025. All rights reserved by Mohamed Menisy</p>
   </footer>
 
@@ -137,21 +198,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script>
+    particlesJS.load('particles-js', 'particles.json', () => { console.log('Particles loaded'); });
+
     gsap.registerPlugin(ScrollTrigger);
     gsap.from(".hero h1", { opacity: 0, y: 50, duration: 1.2, ease: "power3.out", scrollTrigger: ".hero" });
     gsap.from(".hero p", { opacity: 0, y: 30, duration: 1.2, delay: 0.3, ease: "power3.out", scrollTrigger: ".hero" });
     gsap.from(".card, .project-card", { opacity: 0, y: 30, stagger: 0.2, duration: 0.8, ease: "back.out(1.7)", scrollTrigger: ".skills, .projects" });
+    gsap.from(".achievements .card", { opacity: 0, y: 50, stagger: 0.2, duration: 1, scrollTrigger: ".achievements" });
 
     const infoPopup = document.getElementById('info-popup');
     const infoData = {
-      'customer-service': 'Over 5 years managing customer inquiries and ensuring satisfaction at Elshawwa Group and The Chefz.',
-      'operations': 'Optimized workflows and coordinated with stakeholders to enhance efficiency at The Chefz.',
-      'system-design': 'Designed systems like Ticket Maker and Infini Base, improving automation and knowledge management.',
+      'customer-service': 'Over 5 years managing inquiries and ensuring satisfaction at Elshawwa Group and The Chefz.',
+      'operations': 'Optimized workflows and coordinated stakeholders for efficiency at The Chefz.',
+      'system-design': 'Designed systems like Ticket Maker and Infini Base for automation and knowledge management.',
       'technical-support': 'Provided technical assistance and maintained SOPs for seamless operations.',
-      'ticket-maker': 'Objective: Streamline ticket management. Result: Saved 200,000 SAR/month by automating support processes.',
-      'infini-base': 'Objective: Centralize knowledge. Result: Enhanced collaboration across teams.',
-      'core-flow': 'Objective: Track performance and tickets. Result: Improved real-time analytics and productivity.',
-      'coaching-platform': 'Objective: Support leadership development. Result: Delivered a platform for coaching and training.'
+      'ticket-maker': 'Objective: Streamline ticket management. Result: Saved 200,000 SAR/month.',
+      'infini-base': 'Objective: Centralize knowledge. Result: Enhanced team collaboration.',
+      'core-flow': 'Objective: Track performance. Result: Improved analytics and productivity.',
+      'coaching-platform': 'Objective: Support leadership. Result: Delivered training platform.'
     };
 
     function showInfo(key) {
@@ -183,34 +247,47 @@
       document.body.classList.add('light-mode');
     }
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 350, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, 350);
-    document.querySelector('.threejs-scene').appendChild(renderer.domElement);
-
-    const spheres = [];
-    for (let i = 0; i < 5; i++) {
-      const geometry = new THREE.SphereGeometry(1, 32, 32);
-      const material = new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff });
-      const sphere = new THREE.Mesh(geometry, material);
-      sphere.position.set((Math.random() - 0.5) * 8, (Math.random() - 0.5) * 8, (Math.random() - 0.5) * 8);
-      scene.add(sphere);
-      spheres.push(sphere);
+    function easterEgg() {
+      alert('🎉 You found a hidden achievement! You’re awesome!');
+      document.querySelector('.hero-img').style.transform = 'scale(1.1)';
+      setTimeout(() => document.querySelector('.hero-img').style.transform = 'scale(1)', 200);
     }
-    camera.position.z = 8;
 
-    function animate() {
-      requestAnimationFrame(animate);
-      spheres.forEach(sphere => { sphere.rotation.x += 0.01; sphere.rotation.y += 0.01; });
-      renderer.render(scene, camera);
-    }
-    animate();
+    window.onscroll = () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("scroll-bar").style.width = scrolled + "%";
 
-    window.addEventListener('resize', () => {
-      renderer.setSize(window.innerWidth, 350);
-      camera.aspect = window.innerWidth / 350;
-      camera.updateProjectionMatrix();
+      const sections = document.querySelectorAll('section');
+      const indicators = document.querySelectorAll('.scroll-indicator div');
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
+          indicators.forEach(ind => ind.classList.remove('active'));
+          indicators[index].classList.add('active');
+        }
+      });
+    };
+
+    const counters = document.querySelectorAll('.achievements .card');
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText.replace(/[^0-9]/g, '');
+        const increment = target / 200;
+        if (count < target) {
+          counter.innerText = '✔ ' + Math.ceil(count + increment);
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = '✔ ' + target;
+        }
+      };
+      ScrollTrigger.create({
+        trigger: counter,
+        start: 'top 80%',
+        onEnter: updateCount
+      });
     });
   </script>
 </body>
