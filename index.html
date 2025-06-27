@@ -6,11 +6,15 @@
   <title>Mohamed Menisy Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; overflow-x: hidden; }
-    .hero { height: 100vh; display: flex; align-items: center; padding: 20px; max-width: 1200px; margin: 0 auto; gap: 20px; }
-    .hero-img { width: 200px; height: 200px; border-radius: 10px; object-fit: cover; }
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding-top: 80px; transition: all 0.3s; }
+    .theme-toggle { position: fixed; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; z-index: 1000; }
+    .nav { position: fixed; top: 0; width: 100%; background: #1a1a1a; padding: 10px 20px; display: flex; justify-content: center; z-index: 1000; }
+    .nav a { color: #e0e0e0; margin: 0 15px; text-decoration: none; font-weight: 500; }
+    .nav a:hover { color: #6b46c1; }
+    .hero { display: flex; align-items: center; padding: 20px; max-width: 1200px; margin: 0 auto; gap: 15px; }
+    .hero-img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
     .hero-text { text-align: left; flex-grow: 1; }
-    .hero-text h1 { font-size: 2.5rem; margin: 0 0 10px; font-weight: 700; letter-spacing: 1px; }
+    .hero-text h1 { font-size: 2.5rem; margin: 0 0 5px; font-weight: 700; letter-spacing: 1px; }
     .hero-text p { font-size: 1.2rem; opacity: 0.9; margin: 0; }
     .about, .skills, .projects, .contact { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
     .card, .project-card { background: #252525; padding: 15px; margin: 10px; border-radius: 10px; text-align: center; width: 180px; display: inline-block; vertical-align: top; transition: transform 0.3s; cursor: pointer; }
@@ -33,10 +37,27 @@
     .social-info button:hover { background: #553c9a; }
     .social-info a { color: #fff; margin: 0 10px; font-size: 1.5rem; }
     footer { text-align: center; padding: 20px; background: #1a1a1a; }
-    @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; gap: 15px; } .hero-img { margin: 0 auto; } .hero-text h1 { font-size: 1.8rem; } .hero-text p { font-size: 1rem; } .contact { flex-direction: column; gap: 20px; } .contact-info, .social-info { width: 100%; } }
+    .light-mode { background: #f0f0f0; color: #333; }
+    .light-mode .nav { background: #fff; }
+    .light-mode .hero { background: #fff; }
+    .light-mode .card, .light-mode .project-card { background: #e0e0e0; }
+    .light-mode .info-popup { background: #fff; }
+    .light-mode .threejs-scene { background: #ddd; }
+    .light-mode .contact-info p, .light-mode .social-info input, .light-mode .social-info textarea { background: #ddd; }
+    .light-mode .social-info button { background: #4a2c8a; }
+    .light-mode .social-info button:hover { background: #3a1c6a; }
+    .light-mode footer { background: #ddd; }
+    @media (max-width: 768px) { .hero { flex-direction: column; text-align: center; gap: 10px; } .hero-img { margin: 0 auto; } .hero-text h1 { font-size: 1.8rem; } .hero-text p { font-size: 1rem; } .contact { flex-direction: column; gap: 20px; } .contact-info, .social-info { width: 100%; } }
   </style>
 </head>
 <body>
+  <div class="nav">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <i class="fas fa-adjust theme-toggle" onclick="toggleTheme()"></i>
   <section class="hero">
     <img src="mohamed-photo.jpg" alt="Mohamed Menisy" class="hero-img">
     <div class="hero-text">
@@ -45,12 +66,12 @@
     </div>
   </section>
 
-  <section class="about">
+  <section id="about" class="about">
     <h2>About Me</h2>
-    <p>With over 5 years of experience as an Operations and Learning & Development Specialist, I have honed my skills in customer service, system design, and training. I’ve developed impactful solutions such as the Ticket Maker system (saving 200,000 SAR monthly) and Infini Base, a centralized knowledge platform, while leading team management and coaching initiatives at The Chefz.</p>
+    <p>With over 5 years of experience in Operations and Learning & Development, I specialize in customer service, system design, and training. Passionate about Front-End development and programming, I’ve created impactful solutions like the Ticket Maker system (saving 200,000 SAR monthly) and Infini Base, while leading team management and coaching initiatives at The Chefz.</p>
   </section>
 
-  <section class="skills">
+  <section id="skills" class="skills">
     <h2>Skills & Services</h2>
     <div class="card" onclick="showInfo('customer-service')">Customer Service</div>
     <div class="card" onclick="showInfo('operations')">Operations</div>
@@ -59,7 +80,7 @@
     <div id="info-popup" class="info-popup"></div>
   </section>
 
-  <section class="projects">
+  <section id="projects" class="projects">
     <h2>Projects</h2>
     <div class="project-card" onclick="showInfo('ticket-maker')">
       <img src="ticket-maker.jpg" alt="Ticket Maker" style="display: none;"> <!-- Placeholder until image is added -->
@@ -85,11 +106,7 @@
     </div>
   </section>
 
-  <section class="threejs-scene">
-    <!-- Enhanced Three.js Scene -->
-  </section>
-
-  <section class="contact">
+  <section id="contact" class="contact">
     <h2>Contact Info</h2>
     <div class="contact-info">
       <p><i class="fas fa-envelope"></i> Mail US: mmenisy17@gmail.com</p>
@@ -127,14 +144,14 @@
 
     const infoPopup = document.getElementById('info-popup');
     const infoData = {
-      'customer-service': 'Over 5 years managing customer inquiries, resolving issues, and ensuring satisfaction at Elshawwa Group and The Chefz.',
-      'operations': 'Optimized workflows and coordinated with stakeholders to enhance order fulfillment and operational efficiency at The Chefz.',
+      'customer-service': 'Over 5 years managing customer inquiries and ensuring satisfaction at Elshawwa Group and The Chefz.',
+      'operations': 'Optimized workflows and coordinated with stakeholders to enhance efficiency at The Chefz.',
       'system-design': 'Designed systems like Ticket Maker and Infini Base, improving automation and knowledge management.',
       'technical-support': 'Provided technical assistance and maintained SOPs for seamless operations.',
       'ticket-maker': 'Objective: Streamline ticket management. Result: Saved 200,000 SAR/month by automating support processes.',
-      'infini-base': 'Objective: Centralize knowledge. Result: Enhanced collaboration across Ops, Support, and Training teams.',
-      'core-flow': 'Objective: Track performance and tickets. Result: Improved real-time analytics and team productivity.',
-      'coaching-platform': 'Objective: Support leadership development. Result: Delivered a platform for coaching and training programs.'
+      'infini-base': 'Objective: Centralize knowledge. Result: Enhanced collaboration across teams.',
+      'core-flow': 'Objective: Track performance and tickets. Result: Improved real-time analytics and productivity.',
+      'coaching-platform': 'Objective: Support leadership development. Result: Delivered a platform for coaching and training.'
     };
 
     function showInfo(key) {
@@ -148,6 +165,23 @@
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.card') && !e.target.closest('.project-card')) infoPopup.style.display = 'none';
     });
+
+    document.querySelectorAll('.nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-mode');
+    }
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 350, 0.1, 1000);
