@@ -13,8 +13,10 @@
     .hero h1 { font-size: 4rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
     .hero p { font-size: 1.5rem; opacity: 0.9; }
     .about, .skills, .projects, .contact { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-    .card { background: #252525; padding: 25px; margin: 15px; border-radius: 15px; display: inline-block; transition: transform 0.3s; }
-    .card:hover { transform: scale(1.05); }
+    .project-card { background: #252525; padding: 20px; margin: 15px; border-radius: 15px; text-align: center; width: 300px; display: inline-block; vertical-align: top; }
+    .project-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; }
+    .project-card h3 { margin: 10px 0 5px; font-size: 1.5rem; }
+    .project-card p { color: #bbb; font-size: 1rem; }
     .threejs-scene { height: 400px; background: #1c1c1c; }
     @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .hero p { font-size: 1.2rem; } }
   </style>
@@ -24,7 +26,7 @@
     <div>
       <img src="mohamed-photo.jpg" alt="Mohamed Menisy" class="profile-img">
       <h1>Mohamed Menisy</h1>
-      <p>L&D Specialist & Developer</p>
+      <p>Front-End Developer & Trainer</p> <!-- تعديل العنوان هنا -->
     </div>
   </section>
 
@@ -35,17 +37,29 @@
 
   <section class="skills">
     <h2>Skills & Services</h2>
-    <div class="card">Customer Service</div>
-    <div class="card">Operations</div>
-    <div class="card">System Design</div>
-    <div class="card">Technical Support</div>
+    <div class="project-card" style="width: 200px;">Customer Service</div>
+    <div class="project-card" style="width: 200px;">Operations</div>
+    <div class="project-card" style="width: 200px;">System Design</div>
+    <div class="project-card" style="width: 200px;">Technical Support</div>
   </section>
 
   <section class="projects">
     <h2>Projects</h2>
-    <div class="card">Ticket Maker - Saved 200,000 SAR monthly</div>
-    <div class="card">Infini Base - Centralized Knowledge Platform</div>
-    <div class="card">Core Flow - Performance & Ticket Tracking</div>
+    <div class="project-card">
+      <img src="ticket-maker.jpg" alt="Ticket Maker">
+      <h3>Ticket Maker</h3>
+      <p>Saved 200,000 SAR monthly</p>
+    </div>
+    <div class="project-card">
+      <img src="infini-base.jpg" alt="Infini Base">
+      <h3>Infini Base</h3>
+      <p>Centralized Knowledge Platform</p>
+    </div>
+    <div class="project-card">
+      <img src="core-flow.jpg" alt="Core Flow">
+      <h3>Core Flow</h3>
+      <p>Performance & Ticket Tracking System</p>
+    </div>
   </section>
 
   <section class="threejs-scene">
@@ -71,7 +85,7 @@
 
     gsap.from(".hero h1", { opacity: 0, y: 100, duration: 1.5, ease: "power3.out", scrollTrigger: ".hero" });
     gsap.from(".hero p", { opacity: 0, y: 50, duration: 1.5, delay: 0.5, ease: "power3.out", scrollTrigger: ".hero" });
-    gsap.from(".card", { opacity: 0, y: 50, stagger: 0.3, duration: 1, ease: "back.out(1.7)", scrollTrigger: ".skills" });
+    gsap.from(".project-card", { opacity: 0, y: 50, stagger: 0.3, duration: 1, ease: "back.out(1.7)", scrollTrigger: ".projects" });
 
     // Enhanced Three.js Scene with Rotating Spheres
     const scene = new THREE.Scene();
