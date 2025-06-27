@@ -7,17 +7,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
-    body { background: #1a1a1a; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-    .about, .skills, .projects, .contact { padding: 50px; }
-    .card { background: #333; padding: 20px; margin: 10px; border-radius: 10px; display: inline-block; }
-    .threejs-scene { height: 300px; background: #222; }
-    @media (max-width: 768px) { .hero, .about, .skills, .projects, .contact { padding: 20px; } }
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; overflow-x: hidden; }
+    .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
+    .hero img.profile-img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 5px solid #333; }
+    .hero h1 { font-size: 4rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+    .hero p { font-size: 1.5rem; opacity: 0.9; }
+    .about, .skills, .projects, .contact { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    .card { background: #252525; padding: 25px; margin: 15px; border-radius: 15px; display: inline-block; transition: transform 0.3s; }
+    .card:hover { transform: scale(1.05); }
+    .threejs-scene { height: 400px; background: #1c1c1c; }
+    @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .hero p { font-size: 1.2rem; } }
   </style>
 </head>
 <body>
   <section class="hero">
     <div>
+      <img src="mohamed-photo.jpg" alt="Mohamed Menisy" class="profile-img">
       <h1>Mohamed Menisy</h1>
       <p>L&D Specialist & Developer</p>
     </div>
@@ -25,7 +30,7 @@
 
   <section class="about">
     <h2>About Me</h2>
-    <p>Over 5 years of experience in L&D, Customer Service, Operations, System Design, and Technical Support. Known for impactful projects like Ticket Maker (saved 200,000 SAR monthly) and Infini Base.</p>
+    <p>With over 5 years in L&D, Customer Service, Operations, System Design, and Technical Support, I’ve delivered projects like Ticket Maker (saving 200,000 SAR monthly) and Infini Base.</p>
   </section>
 
   <section class="skills">
@@ -40,57 +45,65 @@
     <h2>Projects</h2>
     <div class="card">Ticket Maker - Saved 200,000 SAR monthly</div>
     <div class="card">Infini Base - Centralized Knowledge Platform</div>
-    <div class="card">Core Flow - Performance & Ticket Tracking System</div>
+    <div class="card">Core Flow - Performance & Ticket Tracking</div>
   </section>
 
   <section class="threejs-scene">
-    <!-- Three.js Mini-Game/Scene will be injected here -->
+    <!-- Enhanced Three.js Scene -->
   </section>
 
   <section class="contact">
     <h2>Contact</h2>
-    <p>Email: mmenisy17@gmail.com</p>
+    <p>Email: mmenisy12@gmail.com</p>
     <a href="https://linkedin.com/in/mohamedmenisy17" target="_blank">LinkedIn</a>
     <a href="cv.pdf" download>Download CV</a>
     <div>
       <a href="https://linkedin.com/in/mohamedmenisy17" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:mmenisy17@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="mailto:mmenisy12@gmail.com"><i class="fas fa-envelope"></i></a>
     </div>
   </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".hero h1", { opacity: 0, y: 50, duration: 1, scrollTrigger: ".hero" });
-    gsap.from(".card", { opacity: 0, y: 30, stagger: 0.2, scrollTrigger: ".skills" });
+    gsap.from(".hero h1", { opacity: 0, y: 100, duration: 1.5, ease: "power3.out", scrollTrigger: ".hero" });
+    gsap.from(".hero p", { opacity: 0, y: 50, duration: 1.5, delay: 0.5, ease: "power3.out", scrollTrigger: ".hero" });
+    gsap.from(".card", { opacity: 0, y: 50, stagger: 0.3, duration: 1, ease: "back.out(1.7)", scrollTrigger: ".skills" });
 
-    // Simple Three.js Scene
+    // Enhanced Three.js Scene with Rotating Spheres
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 300, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, 300);
+    renderer.setSize(window.innerWidth, 400);
     document.querySelector('.threejs-scene').appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    camera.position.z = 5;
+    const spheres = [];
+    for (let i = 0; i < 5; i++) {
+      const geometry = new THREE.SphereGeometry(1, 32, 32);
+      const material = new THREE.MeshBasicMaterial({ color: Math.random() * 0xffffff });
+      const sphere = new THREE.Mesh(geometry, material);
+      sphere.position.set((Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10, (Math.random() - 0.5) * 10);
+      scene.add(sphere);
+      spheres.push(sphere);
+    }
+    camera.position.z = 10;
 
     function animate() {
       requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      spheres.forEach(sphere => {
+        sphere.rotation.x += 0.02;
+        sphere.rotation.y += 0.02;
+      });
       renderer.render(scene, camera);
     }
     animate();
 
     window.addEventListener('resize', () => {
-      renderer.setSize(window.innerWidth, 300);
-      camera.aspect = window.innerWidth / 300;
+      renderer.setSize(window.innerWidth, 400);
+      camera.aspect = window.innerWidth / 400;
       camera.updateProjectionMatrix();
     });
   </script>
