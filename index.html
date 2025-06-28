@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SEO & Social Media Meta Tags -->
-  <title>Mohamed Elmenisy | L&D and Operations Specialist</title>
+  <title>Mohamed Elmenisy | Systems & Operations Specialist</title>
   <meta name="description" content="Portfolio of Mohamed Elmenisy, a tech-savvy L&D and Operations Specialist. Discover projects like InfiniBase & Ticket Maker that drive efficiency and save costs.">
   <meta name="author" content="Mohamed Elmenisy">
-  <meta name="keywords" content="Mohamed Elmenisy, L&D, Operations, System Design, Automation, Portfolio, The Chefz">
+  <meta name="keywords" content="Mohamed Elmenisy, L&D, Operations, System Design, Automation, Portfolio, The Chefz, Internal Tools, Knowledge Base">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mohamedelmenisy.github.io/Portfolio/">
-  <meta property="og:title" content="Mohamed Elmenisy | L&D and Operations Specialist">
+  <meta property="og:title" content="Mohamed Elmenisy | Systems & Operations Specialist">
   <meta property="og:description" content="Building scalable systems to boost efficiency, learning, and team collaboration.">
   <meta property="og:image" content="https://mohamedelmenisy.github.io/Portfolio/mohamed-photo.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://mohamedelmenisy.github.io/Portfolio/">
-  <meta property="twitter:title" content="Mohamed Elmenisy | L&D and Operations Specialist">
+  <meta property="twitter:title" content="Mohamed Elmenisy | Systems & Operations Specialist">
   <meta property="twitter:description" content="Building scalable systems to boost efficiency, learning, and team collaboration.">
   <meta property="twitter:image" content="https://mohamedelmenisy.github.io/Portfolio/mohamed-photo.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" href="https://mohamedelmenisy.github.io/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://mohamedelmenisy.github.io/assets/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="https://mohamedelmenisy.github.io/apple-touch-icon.png">
 
   <!-- Stylesheets & Fonts -->
@@ -38,11 +38,13 @@
     :root {
       --primary-color: #6b46c1;
       --primary-hover: #553c9a;
+      --primary-color-rgb: 107, 70, 193; /* For RGBA shadows */
       --bg-dark: #121212;
       --bg-light: #1a1a1a;
       --bg-card: #252525;
       --text-light: #e0e0e0;
       --text-dark: #a0a0a0;
+      --border-color: #333;
       --font-family: 'Poppins', sans-serif;
       --border-radius: 8px;
     }
@@ -50,11 +52,13 @@
     .light-mode {
       --primary-color: #4a2c8a;
       --primary-hover: #3a1c6a;
-      --bg-dark: #f0f0f0;
+      --primary-color-rgb: 74, 44, 138;
+      --bg-dark: #f4f5f7;
       --bg-light: #ffffff;
-      --bg-card: #e9e9e9;
-      --text-light: #333333;
-      --text-dark: #555555;
+      --bg-card: #ffffff;
+      --text-light: #2d3748;
+      --text-dark: #718096;
+      --border-color: #e2e8f0;
     }
 
     /* --- General Styles --- */
@@ -71,12 +75,12 @@
       overflow-x: hidden;
     }
     .container { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-    h1, h2, h3 { font-weight: 600; line-height: 1.3; margin-bottom: 0.5em; }
-    h2 { font-size: 2.2rem; text-align: center; margin-bottom: 40px; position: relative; }
+    h1, h2, h3 { font-weight: 600; line-height: 1.3; margin-bottom: 0.5em; color: var(--text-light); }
+    h2 { font-size: 2.2rem; text-align: center; margin-bottom: 60px; position: relative; }
     h2::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
       width: 60px;
@@ -91,7 +95,8 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: var(--bg-light);
+      background: rgba(37, 37, 37, 0.8);
+      backdrop-filter: blur(10px);
       padding: 15px 30px;
       display: flex;
       justify-content: center;
@@ -99,6 +104,7 @@
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
+    .light-mode .nav { background: rgba(255, 255, 255, 0.8); }
     .nav a { color: var(--text-light); margin: 0 15px; font-weight: 500; transition: color 0.3s; }
     .nav a:hover { color: var(--primary-color); }
     
@@ -115,155 +121,158 @@
     .theme-toggle:hover { transform: scale(1.1); color: var(--primary-color); }
 
     /* --- Hero Section --- */
-    .hero {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      gap: 30px;
-    }
+    .hero { display: flex; align-items: center; padding: 20px; gap: 30px; }
     .hero-img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
+      width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
       border: 4px solid var(--primary-color);
-      box-shadow: 0 0 20px rgba(107, 70, 193, 0.5);
+      box-shadow: 0 0 20px rgba(var(--primary-color-rgb), 0.5);
     }
     .hero-text { flex-grow: 1; }
     .hero-text h1 { font-size: 3rem; font-weight: 700; margin: 0; }
     .hero-text .subtitle { font-size: 1.5rem; color: var(--text-dark); margin: 5px 0 20px; }
     .btn {
-      background: var(--primary-color);
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: var(--border-radius);
-      font-weight: 600;
-      transition: background 0.3s, transform 0.3s;
-      display: inline-block;
+      background: var(--primary-color); color: #fff; padding: 12px 25px;
+      border-radius: var(--border-radius); font-weight: 600;
+      transition: background 0.3s, transform 0.3s; display: inline-block;
     }
     .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
-    /* --- Skills & Technologies Section --- */
+    /* --- Skills Section --- */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 40px;
     }
-    .skill-category h3 { font-size: 1.4rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; margin-bottom: 20px; }
-    .skills-list, .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+    .skill-category { background: var(--bg-card); padding: 2rem; border-radius: var(--border-radius); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .skill-category h3 { font-size: 1.4rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 0.75rem; }
+    .skill-category h3 i { color: var(--primary-color); }
+    .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
+    .skill-pill {
+      background: var(--bg-light); color: var(--text-light); padding: 8px 15px; border-radius: 20px; font-weight: 500;
+      display: flex; align-items: center; gap: 8px; transition: transform 0.2s, box-shadow 0.2s;
     }
-    .skill-pill, .tech-pill {
-      background: var(--bg-card);
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .skill-pill:hover, .tech-pill:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-    .skill-pill i, .tech-pill i { color: var(--primary-color); font-size: 1.2rem; }
+    .light-mode .skill-pill { background-color: #e9e9e9; }
+    .skill-pill:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+    .skill-pill i { color: var(--primary-color); font-size: 1.2rem; }
 
     /* --- Projects Section --- */
-    .projects__tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 40px;
-    }
+    .projects__tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;}
     .projects__tab-btn {
-      background: transparent;
-      border: 2px solid var(--primary-color);
-      color: var(--text-light);
-      padding: 8px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-family: var(--font-family);
-      font-weight: 600;
-      transition: background 0.3s, color 0.3s;
+      background: transparent; border: 2px solid var(--primary-color); color: var(--text-light); padding: 8px 20px;
+      border-radius: 20px; cursor: pointer; font-family: var(--font-family); font-weight: 600; transition: background 0.3s, color 0.3s;
     }
     .projects__tab-btn:hover { background: var(--primary-hover); color: #fff; border-color: var(--primary-hover); }
     .projects__tab-btn.active { background: var(--primary-color); color: #fff; }
     
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
     .project-card {
-      background: var(--bg-card);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      opacity: 0;
-      animation: fadeIn 0.5s forwards;
+      background: var(--bg-card); border-radius: var(--border-radius); overflow: hidden;
+      display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s; opacity: 0; animation: fadeIn 0.5s forwards;
     }
     .project-card.hide { display: none; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(107, 70, 193, 0.3); }
-    .project-card__img { height: 200px; background: #444; display: flex; align-items: center; justify-content: center; font-style: italic; color: var(--text-dark); }
-    .project-card__img i { font-size: 4rem; color: var(--primary-color); }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(var(--primary-color-rgb), 0.3); }
+    .project-card__banner {
+        height: 180px; display: flex; align-items: center; justify-content: center;
+        color: white; position: relative; overflow: hidden;
+    }
+    .project-card__banner i { font-size: 4rem; z-index: 2; }
+    .project-card__banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: inherit; z-index: 1; opacity: 0.5;}
+    /* Project-specific banners */
+    .project-card[data-project-id="infinibase"] .project-card__banner { background: linear-gradient(135deg, #4f46e5, #818cf8); }
+    .project-card[data-project-id="ticketmaker"] .project-card__banner { background: linear-gradient(135deg, #16a34a, #4ade80); }
+    .project-card[data-project-id="team-management"] .project-card__banner { background: linear-gradient(135deg, #ea580c, #fb923c); }
+    .project-card[data-project-id="coaching"] .project-card__banner { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+    
     .project-card__content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
     .project-card__category { font-size: 0.8rem; font-weight: 600; color: var(--primary-color); text-transform: uppercase; margin-bottom: 5px; }
     .project-card h3 { margin-top: 0; font-size: 1.4rem; }
-    .project-card p { color: var(--text-dark); flex-grow: 1; margin-bottom: 20px; }
+    .project-card p { color: var(--text-dark); flex-grow: 1; margin-bottom: 15px; }
+    .project-card__tech { font-size: 0.8rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; }
     .project-card__actions { margin-top: auto; display: flex; gap: 10px; }
-    .project-card__actions .btn-secondary { background: var(--bg-light); color: var(--text-light); padding: 8px 15px; }
-    .project-card__actions .btn-secondary:hover { background: var(--primary-color); }
+    .project-card__actions .btn-secondary { background: var(--bg-light); color: var(--text-light); padding: 8px 15px; border: 1px solid var(--border-color); }
+    .light-mode .project-card__actions .btn-secondary { background: #f0f0f0; }
+    .project-card__actions .btn-secondary:hover { background: var(--primary-color); border-color: var(--primary-color); }
 
     /* --- Achievements Section --- */
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
+    .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .achievement-card {
-      background: var(--bg-card);
-      padding: 25px;
-      border-radius: var(--border-radius);
-      text-align: center;
-      transition: transform 0.3s;
+      background: var(--bg-card); padding: 25px; border-radius: var(--border-radius); text-align: center;
+      transition: transform 0.3s; border-left: 4px solid var(--primary-color);
     }
     .achievement-card:hover { transform: translateY(-5px); }
     .achievement-card i { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
     .achievement-card .counter { font-size: 2.2rem; font-weight: 700; display: block; }
     .achievement-card p { font-size: 1rem; color: var(--text-dark); margin: 0; }
+    .achievement-card .achievement-title { font-size: 1.2rem; font-weight: 600; color: var(--text-light); }
+    .achievement-card .achievement-subtitle { font-size: 0.9rem; margin-top: 0.25rem; color: var(--text-dark); }
     
     /* --- Contact Section --- */
-    .contact-wrapper {
-        background: var(--bg-card);
-        padding: 40px;
+    .contact-section-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 3rem;
+        background-color: var(--bg-card);
+        padding: 3rem;
         border-radius: var(--border-radius);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
     }
-    .contact-wrapper h3 { font-size: 1.8rem; }
-    .contact-wrapper p { max-width: 600px; margin-bottom: 30px; color: var(--text-dark); }
-    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .contact-link {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: var(--text-light);
-        transition: color 0.3s;
+    .contact-info-left h3, .contact-form-right h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
     }
-    .contact-link:hover { color: var(--primary-color); }
-    .contact-link i { margin-right: 8px; }
+    .contact-info-list { list-style: none; padding: 0; margin: 0; }
+    .contact-info-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+    .contact-info-item i {
+        font-size: 1.5rem; color: var(--primary-color); background-color: var(--bg-light);
+        width: 48px; height: 48px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .light-mode .contact-info-item i { background-color: #e9e9e9; }
+    .contact-info-item strong { display: block; font-size: 0.9rem; color: var(--text-dark); }
+    .contact-info-item span { color: var(--text-light); font-weight: 500; word-break: break-word; }
+    .contact-social-info h4 { margin-top: 2rem; font-size: 1.1rem; }
+    .contact-social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+    .contact-social-links a { font-size: 1.5rem; color: var(--text-dark); transition: color 0.3s; }
+    .contact-social-links a:hover { color: var(--primary-color); }
+
+    .contact-form .form-group { margin-bottom: 1.5rem; }
+    .contact-form input, .contact-form textarea {
+        width: 100%; padding: 1rem; font-family: var(--font-family);
+        background: var(--bg-light); color: var(--text-light);
+        border: 1px solid var(--border-color); border-radius: var(--border-radius);
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .light-mode .contact-form input, .light-mode .contact-form textarea { background-color: #f0f0f0; }
+    .contact-form input:focus, .contact-form textarea:focus {
+        outline: none; border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form .btn { width: 100%; }
 
     /* --- Footer --- */
     footer { text-align: center; padding: 30px 20px; background: var(--bg-light); margin-top: 40px; }
     footer .logo { font-size: 2rem; font-weight: bold; color: var(--primary-color); margin-bottom: 10px; }
 
+    /* --- Back to Top Button --- */
+    #back-to-top {
+        position: fixed; bottom: 20px; right: 20px;
+        background: var(--primary-color); color: #fff;
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        text-decoration: none; font-size: 1.2rem;
+        opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        z-index: 999;
+    }
+    #back-to-top.show { opacity: 1; visibility: visible; }
+    #back-to-top:hover { background: var(--primary-hover); transform: translateY(-3px); }
+
+
     /* --- Responsive Design --- */
+    @media (max-width: 992px) {
+        .contact-section-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
       body { padding-top: 60px; }
       h2 { font-size: 1.8rem; }
@@ -272,7 +281,7 @@
       .hero { flex-direction: column; text-align: center; }
       .hero-text h1 { font-size: 2.2rem; }
       .hero-text .subtitle { font-size: 1.2rem; }
-      .projects__tabs { flex-wrap: wrap; }
+      .contact-section-grid { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -292,8 +301,8 @@
       <img src="https://mohamedelmenisy.github.io/Portfolio/mohamed-photo.jpg" alt="Mohamed Elmenisy" class="hero-img">
       <div class="hero-text">
         <h1>Mohamed Elmenisy</h1>
-        <p class="subtitle">Operations & L&D Specialist | System Builder</p>
-        <p>I don’t just build systems—I solve problems. My blend of training, operations, and automation expertise reduces manual effort, scales efficiency, and keeps remote teams thriving. Passionate about creating tools that drive real impact.</p>
+        <p class="subtitle">Systems & Operations Specialist | L&D</p>
+        <p>I build and implement scalable systems that solve real business problems. My expertise in training, operations, and automation reduces manual effort, scales efficiency, and empowers remote teams to thrive.</p>
         <a href="Mohamed_Elmenisy_CV.pdf" download class="btn">Download CV</a>
       </div>
     </section>
@@ -302,41 +311,41 @@
       <h2>My Skills & Expertise</h2>
       <div class="skills-grid">
         <div class="skill-category">
-          <h3>Technical Skills</h3>
+          <h3><i class="fas fa-tools"></i>Technical Skills</h3>
           <div class="skills-list">
-            <span class="skill-pill"><i class="fas fa-sitemap"></i> System Design</span>
-            <span class="skill-pill"><i class="fas fa-cogs"></i> Workflow Automation</span>
-            <span class="skill-pill"><i class="fab fa-html5"></i> HTML</span>
-            <span class="skill-pill"><i class="fab fa-css3-alt"></i> CSS</span>
-            <span class="skill-pill"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="skill-pill"><i class="fab fa-html5"></i> HTML, CSS, JS</span>
             <span class="skill-pill"><i class="fas fa-database"></i> Supabase</span>
             <span class="skill-pill"><i class="fas fa-file-excel"></i> Google Sheets & Excel</span>
             <span class="skill-pill"><i class="fab fa-github"></i> GitHub Pages</span>
-            <span class="skill-pill"><i class="fas fa-file-alt"></i> SOP & Documentation</span>
+            <span class="skill-pill"><i class="fas fa-project-diagram"></i> Mermaid.js</span>
+            <span class="skill-pill"><i class="fas fa-chart-line"></i> GSAP</span>
+            <span class="skill-pill"><i class="fas fa-link"></i> Zapier</span>
+            <span class="skill-pill"><i class="fab fa-notion"></i> Notion API</span>
+            <span class="skill-pill"><i class="fas fa-file-invoice"></i> Google Workspace</span>
           </div>
         </div>
         <div class="skill-category">
-          <h3>Soft Skills</h3>
+          <h3><i class="fas fa-cogs"></i>System Capabilities</h3>
           <div class="skills-list">
-            <span class="skill-pill"><i class="fas fa-users"></i> Leadership & Team Coaching</span>
-            <span class="skill-pill"><i class="fas fa-microphone"></i> Public Speaking</span>
-            <span class="skill-pill"><i class="fas fa-lightbulb"></i> Analytical & Problem-Solving</span>
+            <span class="skill-pill"><i class="fas fa-sitemap"></i> System Design</span>
+            <span class="skill-pill"><i class="fas fa-robot"></i> Workflow Automation</span>
+            <span class="skill-pill"><i class="fas fa-hammer"></i> Internal Tools Building</span>
+            <span class="skill-pill"><i class="fas fa-book-open"></i> Knowledge Base Systems</span>
+            <span class="skill-pill"><i class="fas fa-chalkboard-teacher"></i> Coaching & Feedback Platforms</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-handshake"></i>Business & Soft Skills</h3>
+          <div class="skills-list">
             <span class="skill-pill"><i class="fas fa-tasks"></i> Project Management</span>
+            <span class="skill-pill"><i class="fas fa-microphone"></i> Public Speaking</span>
+            <span class="skill-pill"><i class="fas fa-lightbulb"></i> Analytical Thinking</span>
+            <span class="skill-pill"><i class="fas fa-users"></i> Team Coaching</span>
+            <span class="skill-pill"><i class="fas fa-puzzle-piece"></i> Problem Solving</span>
+            <span class="skill-pill"><i class="fas fa-comments"></i> Communication</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <section id="technologies" class="container">
-        <h2>Technologies I Use</h2>
-        <div class="tech-list" style="justify-content: center;">
-            <div class="tech-pill"><i class="fas fa-database"></i> Supabase</div>
-            <div class="tech-pill"><i class="fas fa-chart-line"></i> GSAP</div>
-            <div class="tech-pill"><i class="fas fa-project-diagram"></i> Mermaid.js</div>
-            <div class="tech-pill"><i class="fas fa-link"></i> Zapier</div>
-            <div class="tech-pill"><i class="fab fa-notion"></i> Notion</div>
-            <div class="tech-pill"><i class="fas fa-file-invoice"></i> Google Workspace</div>
-        </div>
     </section>
 
     <section id="projects" class="container">
@@ -345,15 +354,18 @@
         <button class="projects__tab-btn active" data-filter="all">All</button>
         <button class="projects__tab-btn" data-filter="system">Systems</button>
         <button class="projects__tab-btn" data-filter="platform">Platforms</button>
+        <button class="projects__tab-btn" data-filter="tool">Tools</button>
+        <button class="projects__tab-btn" data-filter="dashboard">Dashboards</button>
       </div>
       <div class="projects-grid">
         <!-- Project 1: Infini Base -->
-        <div class="project-card" data-category="system platform">
-          <div class="project-card__img"><i class="fas fa-database"></i></div>
+        <div class="project-card" data-category="system platform" data-project-id="infinibase">
+          <div class="project-card__banner"><i class="fas fa-database"></i></div>
           <div class="project-card__content">
-            <span class="project-card__category">Platform / System</span>
+            <span class="project-card__category">System / Platform</span>
             <h3>Infini Base</h3>
-            <p>A centralized, dynamic knowledge base built with HTML, CSS, JS, and Supabase to serve Operations, Support, and Training teams.</p>
+            <p>A centralized, dynamic knowledge base to serve Operations, Support, and Training teams, improving information access and consistency.</p>
+            <p class="project-card__tech">Built with HTML, CSS, JS, Supabase. Hosted on GitHub Pages.</p>
             <div class="project-card__actions">
               <a href="https://mohamedelmenisy.github.io/infini-base/" target="_blank" rel="noopener noreferrer" class="btn">Live Preview</a>
               <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -361,12 +373,13 @@
           </div>
         </div>
         <!-- Project 2: Ticket Maker -->
-        <div class="project-card" data-category="system">
-          <div class="project-card__img"><i class="fas fa-ticket-alt"></i></div>
+        <div class="project-card" data-category="tool system dashboard" data-project-id="ticketmaker">
+          <div class="project-card__banner"><i class="fas fa-ticket-alt"></i></div>
           <div class="project-card__content">
-            <span class="project-card__category">System</span>
-            <h3>Ticket Maker</h3>
+            <span class="project-card__category">Automation Tool / System</span>
+            <h3>Ticket Maker System</h3>
             <p>Automated ticketing system using Google Sheets & Zapier. Drastically cut manual work and saved the company over 200,000 SAR/month.</p>
+            <p class="project-card__tech">Built with Google Sheets, Zapier, HTML/CSS/JS. Hosted on GitHub Pages.</p>
             <div class="project-card__actions">
               <a href="https://mohamedelmenisy.github.io/elevo-core-flow/" target="_blank" rel="noopener noreferrer" class="btn">Live Preview</a>
               <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -374,12 +387,13 @@
           </div>
         </div>
         <!-- Project 3: Team Management System -->
-        <div class="project-card" data-category="system">
-          <div class="project-card__img"><i class="fas fa-users-cog"></i></div>
+        <div class="project-card" data-category="system platform" data-project-id="team-management">
+          <div class="project-card__banner"><i class="fas fa-users-cog"></i></div>
           <div class="project-card__content">
-            <span class="project-card__category">System</span>
+            <span class="project-card__category">Internal System</span>
             <h3>Team Management System</h3>
-            <p>An internal system to plan, schedule, and track team tasks, streamlining operations and improving alignment.</p>
+            <p>An internal system to plan, schedule, and track team tasks, streamlining operations and improving cross-departmental alignment.</p>
+            <p class="project-card__tech">Built with HTML, CSS, JS. Hosted on GitHub Pages.</p>
             <div class="project-card__actions">
               <a href="https://mohamedelmenisy.github.io/team-platform/" target="_blank" rel="noopener noreferrer" class="btn">Live Preview</a>
               <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -387,12 +401,13 @@
           </div>
         </div>
         <!-- Project 4: Coaching Platform -->
-        <div class="project-card" data-category="platform">
-          <div class="project-card__img"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="project-card" data-category="platform" data-project-id="coaching">
+          <div class="project-card__banner"><i class="fas fa-chalkboard-teacher"></i></div>
           <div class="project-card__content">
-            <span class="project-card__category">Platform</span>
-            <h3>Coaching Platform</h3>
+            <span class="project-card__category">L&D Platform</span>
+            <h3>Coaching & Development Platform</h3>
             <p>A comprehensive platform for leadership assessment, development, and coaching, delivered across multiple departments to enhance skills.</p>
+            <p class="project-card__tech">Built with HTML, CSS, JS. Hosted on GitHub Pages.</p>
             <div class="project-card__actions">
               <a href="https://mohamedelmenisy.github.io/coaching-leadership-course/" target="_blank" rel="noopener noreferrer" class="btn">Live Preview</a>
               <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -403,52 +418,103 @@
     </section>
 
     <section id="achievements" class="container">
-        <h2>Key Achievements</h2>
+        <h2>Real Business Impact</h2>
         <div class="achievements-grid">
           <div class="achievement-card">
             <i class="fas fa-coins"></i>
             <span class="counter" data-target="200000">0</span>
-            <p>SAR Saved/Month with Ticket Maker</p>
+            <p class="achievement-title">SAR Saved Monthly</p>
+            <p class="achievement-subtitle">via Ticket Automation System</p>
           </div>
           <div class="achievement-card">
             <i class="fas fa-tachometer-alt"></i>
             <span class="counter" data-target="60">0</span>
-            <p>% Reduction in Ticket Handling Time</p>
+            <p class="achievement-title">Reduced Ticket Handling Time</p>
+            <p class="achievement-subtitle">Through process automation</p>
           </div>
           <div class="achievement-card">
             <i class="fas fa-user-plus"></i>
             <span class="counter" data-target="40">0</span>
-            <p>+ Agents Onboarded & Trained</p>
+            <p class="achievement-title">+ Agents Onboarded</p>
+            <p class="achievement-subtitle">Using custom-built training modules</p>
           </div>
           <div class="achievement-card">
             <i class="fas fa-rocket"></i>
-            <p style="font-size: 1.2rem; font-weight: 600;">Launched Infini Base</p>
-            <p>Used by multiple teams across the company.</p>
+            <p class="achievement-title">Launched 4+ Internal Systems</p>
+            <p class="achievement-subtitle">Including InfiniBase & Team Platforms</p>
           </div>
           <div class="achievement-card">
             <i class="fas fa-trophy"></i>
-            <p style="font-size: 1.2rem; font-weight: 600;">Employee of the Month</p>
-            <p>Awarded 3 consecutive times for service excellence.</p>
+             <p class="achievement-title">Employee of the Month (3x)</p>
+            <p class="achievement-subtitle">Awarded consecutively for service excellence</p>
           </div>
            <div class="achievement-card">
-            <i class="fas fa-cogs"></i>
-            <p style="font-size: 1.2rem; font-weight: 600;">Built Multiple Systems</p>
-            <p>Including Team Management & Coaching Platforms.</p>
+            <i class="fas fa-check-circle"></i>
+            <p class="achievement-title">Cross-Team Adoption</p>
+            <p class="achievement-subtitle">Systems used by multiple departments</p>
           </div>
         </div>
       </section>
 
     <section id="contact" class="container">
-        <div class="contact-wrapper">
-            <h2>Let's Work Together</h2>
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to get in touch.</p>
-            <div class="contact-links">
-                <a href="mailto:mmenisy17@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> mmenisy17@gmail.com</a>
-                <a href="https://linkedin.com/in/mohamedmenisy17" target="_blank" rel="noopener noreferrer" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+        <div class="contact-section-grid">
+            <div class="contact-info-left">
+                <h3>Contact Info</h3>
+                <ul class="contact-info-list">
+                    <li class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>MAIL US</strong>
+                            <span>mmenisy17@gmail.com</span>
+                        </div>
+                    </li>
+                    <li class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>CALL US</strong>
+                            <span>+20123456789</span>
+                        </div>
+                    </li>
+                    <li class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>LOCATION</strong>
+                            <span>Giza, Egypt</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="contact-social-info">
+                    <h4>Social Info</h4>
+                    <div class="contact-social-links">
+                        <a href="https://linkedin.com/in/mohamedmenisy17" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-right">
+                <h3>Let's Work Together.</h3>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name*" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email*" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject*" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Message*" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
   </main>
+  
+  <a href="#" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
   
   <footer>
     <div class="logo">ME</div>
@@ -459,7 +525,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
       // --- Theme Toggler ---
       const themeToggleBtn = document.getElementById('theme-toggle-btn');
       themeToggleBtn.addEventListener('click', () => {
@@ -470,7 +535,6 @@
         localStorage.setItem('theme', theme);
       });
 
-      // Load saved theme
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
         themeToggleBtn.classList.replace('fa-moon', 'fa-sun');
@@ -479,45 +543,57 @@
       // --- Project Tabs Filter ---
       const tabsContainer = document.querySelector('.projects__tabs');
       const projectCards = document.querySelectorAll('.project-card');
-
       tabsContainer.addEventListener('click', (e) => {
         if (e.target.tagName !== 'BUTTON') return;
-
         const filter = e.target.dataset.filter;
-        
-        // Update active button
         tabsContainer.querySelector('.active').classList.remove('active');
         e.target.classList.add('active');
-
-        // Filter cards
         projectCards.forEach(card => {
           const categories = card.dataset.category.split(' ');
           const shouldShow = filter === 'all' || categories.includes(filter);
-          
           card.classList.toggle('hide', !shouldShow);
-          if (shouldShow) {
-              card.style.animation = 'fadeIn 0.5s forwards';
-          }
+          if (shouldShow) card.style.animation = 'fadeIn 0.5s forwards';
         });
+      });
+
+      // --- Back to Top Button ---
+      const backToTopBtn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      // --- Contact Form ---
+      const contactForm = document.getElementById('contactForm');
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your message! This is a demo form.');
+        contactForm.reset();
       });
 
       // --- GSAP Animations ---
       gsap.registerPlugin(ScrollTrigger);
-      
-      // Hero animation
-      gsap.from('.hero-img', { opacity: 0, scale: 0.8, duration: 1, ease: 'power3.out' });
-      gsap.from('.hero-text > *', { opacity: 0, y: 30, stagger: 0.2, duration: 0.8, ease: 'power3.out' });
-
-      // Section titles animation
-      gsap.from('h2', {
-        scrollTrigger: { trigger: 'h2', start: 'top 90%', toggleActions: 'play none none none' },
-        opacity: 0, y: 20, duration: 0.6
+      gsap.from('.hero > *', { opacity: 0, y: 30, stagger: 0.2, duration: 0.8, ease: 'power3.out' });
+      gsap.utils.toArray('h2').forEach(h2 => {
+        gsap.from(h2, {
+          scrollTrigger: { trigger: h2, start: 'top 90%', toggleActions: 'play none none none' },
+          opacity: 0, y: 20, duration: 0.6
+        });
       });
-
-      // Skills animation
-      gsap.from('.skill-pill, .tech-pill', {
-          scrollTrigger: { trigger: '.skills-grid, .tech-list', start: 'top 80%' },
-          opacity: 0, y: 20, stagger: 0.1, duration: 0.5
+      gsap.from('.skill-category', {
+          scrollTrigger: { trigger: '.skills-grid', start: 'top 80%' },
+          opacity: 0, y: 40, stagger: 0.2, duration: 0.7
+      });
+      gsap.from('.achievement-card', {
+        scrollTrigger: { trigger: '.achievements-grid', start: 'top 80%' },
+        opacity: 0, y: 50, stagger: 0.2, duration: 0.8
+      });
+      gsap.from('.contact-section-grid > *', {
+        scrollTrigger: { trigger: '.contact-section-grid', start: 'top 80%' },
+        opacity: 0, y: 50, stagger: 0.3, duration: 0.8
       });
 
       // --- Achievement Counter Animation ---
@@ -528,37 +604,16 @@
         const isCurrency = counter.nextElementSibling.textContent.includes('SAR');
         
         gsap.from(counter, {
-          textContent: 0,
-          duration: 2,
-          ease: 'power1.inOut',
-          snap: { textContent: 1 },
-          scrollTrigger: {
-            trigger: counter,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          },
+          textContent: 0, duration: 2, ease: 'power1.inOut', snap: { textContent: 1 },
+          scrollTrigger: { trigger: counter, start: 'top 85%', toggleActions: 'play none none none' },
           onUpdate: function() {
-              if (isCurrency) {
-                  this.targets()[0].innerHTML = Math.ceil(this.targets()[0].textContent).toLocaleString('en-US');
-              } else {
-                  this.targets()[0].innerHTML = Math.ceil(this.targets()[0].textContent) + textAfter;
-              }
+              let val = Math.ceil(this.targets()[0].textContent);
+              this.targets()[0].innerHTML = isCurrency ? val.toLocaleString('en-US') : val + textAfter;
           },
-           onComplete: function() {
-              if (isCurrency) {
-                  this.targets()[0].innerHTML = target.toLocaleString('en-US');
-              } else {
-                  this.targets()[0].innerHTML = target + textAfter;
-              }
-          }
+          onComplete: function() { this.targets()[0].innerHTML = isCurrency ? target.toLocaleString('en-US') : target + textAfter; }
         });
       });
       
-      gsap.from('.achievement-card', {
-        scrollTrigger: { trigger: '.achievements-grid', start: 'top 80%' },
-        opacity: 0, y: 50, stagger: 0.2, duration: 0.8
-      });
-
       // Set current year in footer
       document.getElementById('year').textContent = new Date().getFullYear();
     });
