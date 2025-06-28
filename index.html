@@ -23,9 +23,8 @@
   <meta property="twitter:description" content="Building scalable systems to boost efficiency, learning, and team collaboration.">
   <meta property="twitter:image" content="https://mohamedelmenisy.github.io/Portfolio/mohamed-photo.jpg">
 
-  <!-- Favicon - Corrected Path -->
-  <link rel="icon" href="https://mohamedelmenisy.github.io/assets/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://mohamedelmenisy.github.io/apple-touch-icon.png">
+  <!-- Favicon - Corrected from icons8 -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://img.icons8.com/fluency/48/000000/group-task.png">
 
   <!-- Stylesheets & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,49 +177,41 @@
     }
     .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
 
-    /* --- Experience Section --- */
-    .timeline {
+    /* --- Experience Section (Vertical Timeline) --- */
+    .timeline-wrapper-vertical {
         position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 40px 0;
+        padding: 20px 0;
     }
-    .timeline::after {
+    .timeline-wrapper-vertical::before {
         content: '';
         position: absolute;
-        width: 4px;
-        background: var(--primary-color);
-        opacity: 0.3;
         top: 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -2px;
+        left: 20px;
+        height: 100%;
+        width: 3px;
+        background: var(--border-color);
     }
-    .timeline-item {
-        padding: 10px 40px;
+    .timeline-entry {
         position: relative;
-        background-color: inherit;
-        width: 50%;
+        margin-bottom: 50px;
+        padding-left: 60px;
     }
-    .timeline-item.left { left: 0; }
-    .timeline-item.right { left: 50%; }
-    .timeline-item::after {
+    .timeline-dot {
         content: '';
         position: absolute;
-        width: 20px;
-        height: 20px;
-        right: -10px;
-        background-color: var(--bg-card);
-        border: 4px solid var(--primary-color);
-        top: 25px;
+        left: 11.5px;
+        top: 5px;
+        height: 18px;
+        width: 18px;
+        border: 3px solid var(--primary-color);
+        background: var(--bg-dark);
         border-radius: 50%;
         z-index: 1;
     }
-    .timeline-item.right::after { left: -10px; }
     .timeline-content {
-        padding: 20px 30px;
-        background: var(--bg-card);
         position: relative;
+        background: var(--bg-card);
+        padding: 1.5rem;
         border-radius: var(--border-radius);
         box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
@@ -228,6 +219,7 @@
     .timeline-content .company { font-weight: 600; color: var(--text-light); }
     .timeline-content .duration { color: var(--text-dark); font-size: 0.9rem; margin-bottom: 10px; }
     .timeline-content ul { padding-left: 20px; color: var(--text-dark); }
+    .timeline-content ul li::marker { color: var(--primary-color); }
 
 
     /* --- Skills Section --- */
@@ -269,17 +261,17 @@
     .project-card__banner {
         height: 180px; display: flex; align-items: center; justify-content: center;
         background-size: cover; background-position: center;
-        color: white; position: relative; overflow: hidden;
+        position: relative; overflow: hidden;
     }
     .project-card__banner::before {
         content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
         background-color: rgba(0,0,0,0.5); z-index: 1;
     }
-    .project-card__banner i { font-size: 4rem; z-index: 2; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
     
     .project-card__content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
     .project-card__category { font-size: 0.8rem; font-weight: 600; color: var(--primary-color); text-transform: uppercase; margin-bottom: 5px; }
-    .project-card h3 { margin-top: 0; font-size: 1.4rem; }
+    .project-card h3 { margin-top: 0; font-size: 1.4rem; display: flex; align-items: center; gap: 0.5rem; }
+    .project-card h3 i { font-size: 1.1rem; color: var(--primary-color); }
     .project-card p { color: var(--text-dark); flex-grow: 1; margin-bottom: 15px; }
     .project-card__tech { font-size: 0.8rem; color: var(--text-dark); font-style: italic; margin-bottom: 20px; }
     .project-card__actions { margin-top: auto; display: flex; gap: 10px; }
@@ -289,14 +281,11 @@
 
     /* --- Templates Section --- */
     .template-card {
-        background: var(--bg-card);
-        padding: 1.5rem;
-        border-radius: var(--border-radius);
-        text-align: center;
-        transition: transform 0.3s;
+        background: var(--bg-card); padding: 1.5rem; border-radius: var(--border-radius);
+        text-align: center; transition: transform 0.3s, box-shadow 0.3s;
         border: 1px solid var(--border-color);
     }
-    .template-card:hover { transform: translateY(-5px); }
+    .template-card:hover { transform: translateY(-5px); box-shadow: 0 4px 10px rgba(var(--primary-color-rgb), 0.2); }
     .template-card i { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; }
     .template-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
     .template-card p { font-size: 0.9rem; color: var(--text-dark); margin-bottom: 1.5rem; }
@@ -378,10 +367,6 @@
     /* --- Responsive Design --- */
     @media (max-width: 992px) {
         .contact-section-grid { grid-template-columns: 1fr; }
-        .timeline::after { left: 10px; }
-        .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
-        .timeline-item.left::after, .timeline-item.right::after { left: 0; }
-        .timeline-item.right { left: 0%; }
         .side-nav { display: none; } /* Hide dot nav on smaller screens */
     }
     @media (max-width: 768px) {
@@ -393,6 +378,9 @@
       .hero-text h1 { font-size: 2.2rem; }
       .hero-text .subtitle { font-size: 1.2rem; }
       .contact-section-grid { padding: 1.5rem; }
+      .timeline-wrapper-vertical::before { left: 10px; }
+      .timeline-entry { padding-left: 40px; }
+      .timeline-dot { left: 1.5px; }
     }
   </style>
 </head>
@@ -413,6 +401,7 @@
       <a href="#experience" class="side-nav-dot" data-tooltip="Experience"></a>
       <a href="#skills" class="side-nav-dot" data-tooltip="Skills"></a>
       <a href="#projects" class="side-nav-dot" data-tooltip="Projects"></a>
+      <a href="#templates" class="side-nav-dot" data-tooltip="Resources"></a>
       <a href="#achievements" class="side-nav-dot" data-tooltip="Impact"></a>
       <a href="#contact" class="side-nav-dot" data-tooltip="Contact"></a>
   </nav>
@@ -430,8 +419,9 @@
 
     <section id="experience" class="container">
         <h2>Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item left">
+        <div class="timeline-wrapper-vertical">
+            <div class="timeline-entry">
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Learning And Development Specialist</h3>
                     <p class="company">The Chefz</p>
@@ -443,7 +433,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="timeline-item right">
+            <div class="timeline-entry">
+                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>Operations Quality Specialist</h3>
                     <p class="company">The Chefz</p>
@@ -511,12 +502,10 @@
       <div class="projects-grid">
         <!-- Project 1: Infini Base -->
         <div class="project-card" data-category="system platform" data-project-id="infinibase">
-          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop');">
-            <i class="fas fa-database"></i>
-          </div>
+          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop');"></div>
           <div class="project-card__content">
             <span class="project-card__category">System / Platform</span>
-            <h3>Infini Base</h3>
+            <h3><i class="fas fa-database"></i>Infini Base</h3>
             <p>A centralized, dynamic knowledge base to serve Operations, Support, and Training teams, improving information access and consistency.</p>
             <p class="project-card__tech">Built with HTML, CSS, JS, Supabase. Hosted on GitHub Pages.</p>
             <div class="project-card__actions">
@@ -527,12 +516,10 @@
         </div>
         <!-- Project 2: Ticket Maker -->
         <div class="project-card" data-category="tool system dashboard" data-project-id="ticketmaker">
-          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?q=80&w=2070&auto=format&fit=crop');">
-            <i class="fas fa-ticket-alt"></i>
-          </div>
+          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop');"></div>
           <div class="project-card__content">
             <span class="project-card__category">Automation Tool / System</span>
-            <h3>Ticket Maker System</h3>
+            <h3><i class="fas fa-ticket-alt"></i>Ticket Maker System</h3>
             <p>A web-based application built to automate ticket generation, which drastically cut manual work and saved the company over 200,000 SAR/month.</p>
             <p class="project-card__tech">Built with JavaScript, Supabase for backend, and hosted on GitHub Pages.</p>
             <div class="project-card__actions">
@@ -543,12 +530,10 @@
         </div>
         <!-- Project 3: Team Management System -->
         <div class="project-card" data-category="system platform" data-project-id="team-management">
-          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');">
-            <i class="fas fa-users-cog"></i>
-          </div>
+          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop');"></div>
           <div class="project-card__content">
             <span class="project-card__category">Internal System</span>
-            <h3>Team Management System</h3>
+            <h3><i class="fas fa-users-cog"></i>Team Management System</h3>
             <p>An internal system to plan, schedule, and track team tasks, streamlining operations and improving cross-departmental alignment.</p>
             <p class="project-card__tech">Built with HTML, CSS, JS. Hosted on GitHub Pages.</p>
             <div class="project-card__actions">
@@ -559,12 +544,10 @@
         </div>
         <!-- Project 4: Coaching Platform -->
         <div class="project-card" data-category="platform" data-project-id="coaching">
-          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop');">
-            <i class="fas fa-chalkboard-teacher"></i>
-          </div>
+          <div class="project-card__banner" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop');"></div>
           <div class="project-card__content">
             <span class="project-card__category">L&D Platform</span>
-            <h3>Coaching & Development Platform</h3>
+            <h3><i class="fas fa-chalkboard-teacher"></i>Coaching & Development Platform</h3>
             <p>A comprehensive platform for leadership assessment, development, and coaching, delivered across multiple departments to enhance skills.</p>
             <p class="project-card__tech">Built with HTML, CSS, JS. Hosted on GitHub Pages.</p>
             <div class="project-card__actions">
@@ -677,8 +660,8 @@
             </div>
             <div class="contact-form-right">
                 <h3>Let's Work Together.</h3>
-                <!-- FORMSPREE ACTION URL - Replace with your own -->
-                <form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" id="contactForm">
+                <!-- FORMSPREE ACTION URL - Updated -->
+                <form class="contact-form" action="https://formspree.io/f/xldnawrk" method="POST" id="contactForm">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Name*" required>
                     </div>
@@ -759,14 +742,14 @@
       sections.forEach(section => observer.observe(section));
 
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopBtn.classList.add('show');
-          sideNav.style.opacity = '1';
-        } else {
-          backToTopBtn.classList.remove('show');
-          sideNav.style.opacity = '0';
-        }
+        const isVisible = window.scrollY > 300;
+        backToTopBtn.classList.toggle('show', isVisible);
+        if(sideNav) sideNav.style.opacity = isVisible ? '1' : '0';
       });
+
+      // --- Contact Form (using Formspree) ---
+      // The form will submit via its `action` attribute. No complex JS needed.
+      // You can add JS for a success/error message if you want.
 
       // --- GSAP Animations ---
       gsap.registerPlugin(ScrollTrigger);
@@ -777,9 +760,9 @@
           opacity: 0, y: 20, duration: 0.6
         });
       });
-      gsap.from('.timeline-item', {
-        scrollTrigger: { trigger: '.timeline', start: 'top 80%' },
-        opacity: 0, x: (index, target) => target.classList.contains('left') ? -50 : 50,
+      gsap.from('.timeline-entry', {
+        scrollTrigger: { trigger: '.timeline-wrapper-vertical', start: 'top 80%' },
+        opacity: 0, x: -50,
         stagger: 0.3, duration: 0.8
       });
       gsap.from('.skill-category', {
@@ -787,7 +770,7 @@
           opacity: 0, y: 40, stagger: 0.2, duration: 0.7
       });
       gsap.from('.achievement-card, .template-card', {
-        scrollTrigger: { trigger: '.achievements-grid, .templates-grid', start: 'top 80%' },
+        scrollTrigger: { trigger: '.achievements-grid, #templates', start: 'top 80%' },
         opacity: 0, y: 50, stagger: 0.2, duration: 0.8
       });
       gsap.from('.contact-section-grid > *', {
